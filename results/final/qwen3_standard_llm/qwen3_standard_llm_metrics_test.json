@@ -1,0 +1,15 @@
+{
+  "split": "test",
+  "n_samples": 1597,
+  "n_positive": 562,
+  "accuracy": 0.6049,
+  "precision": 0.4196,
+  "recall": 0.3203,
+  "f1": 0.3633,
+  "precision_macro": 0.5463,
+  "recall_macro": 0.5399,
+  "f1_macro": 0.5384,
+  "balanced_accuracy": 0.5399,
+  "auc_roc": 0.5725,
+  "auc_pr": 0.4242
+}

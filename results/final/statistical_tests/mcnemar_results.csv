@@ -1,0 +1,4 @@
+model_a,model_b,n_b,n_c,statistic,p_value,significant,test_type
+Multimodal LR,Qwen3 Standard LLM,377,309,6.543731778425656,0.010525433138857286,True,chi2
+Multimodal LR,QwQ Reasoning LLM,398,333,5.60328317373461,0.017926852291157997,True,chi2
+Qwen3 Standard LLM,QwQ Reasoning LLM,162,165,0.012232415902140673,0.9119333470737875,False,chi2

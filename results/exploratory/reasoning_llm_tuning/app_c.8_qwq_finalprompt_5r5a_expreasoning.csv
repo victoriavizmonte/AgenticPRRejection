@@ -1,0 +1,828 @@
+pr_id,label,raw_prediction,rejection_probability,y_pred,reasoning_trace
+3208247197,0,accepted,0.2187,0,"Okay, let's tackle this PR evaluation. The title is ""EnableWindowDrag support"" and the description mentions adding HostWindow drag integration for DocumentTabStrip. The user provided metadata and diff text.
+
+First, looking at the title and description: They clearly state the intent to add drag support, which is a feature enhancement. The testing commands are there, but the description is a bit brief. However, it's not vague or experimental. The description length is moderate, and there's no mention of being experimental or tentative.
+
+Now, checking the metadata. The task type is ""feat,"" which aligns with the title. The files changed are 3, which isn't too many. The additions are 70 lines, deletions 2. The metadata shows that tests were touched, which is good. The File entropy is 0.63, which isn't extremely high. The PR has related issues set to 0, but since it's a feature addition, maybe that's okay. The description isn't empty, and it's not marked as experimental. The submission time is during the day, which might not matter much.
+
+Looking at the diff: The changes are in C# code. There's addition of drag handling logic in the DocumentTabStrip class. The code seems to involve handling pointer events (pressed, moved, released) to enable dragging the window. The changes include checking for HostWindow, handling position changes, and integrating with the window's drag functions. The diff shows adding event handlers and state management for dragging. 
+
+Possible issues? Let me see. The diff includes some event handlers and drag logic. Since it's a UI feature, if there are no tests mentioned beyond the basic commands, maybe the test coverage is insufficient. The metadata says Touches tests: True, which is good, but the testing commands listed are standard build and test commands, so maybe the tests are there. 
+
+Another point: The PR has 3 commits, which is reasonable. The additions are significant but focused on the drag functionality. The description doesn't mention any related issues, but if it's a new feature, that might be acceptable. The diff doesn't show any obvious code duplication or trivial changes. The changes are in the UI components, so if done correctly, they should be okay. 
+
+The metadata doesn't indicate any experimental flags. The language is C#, and the project has a MIT license. The agent is OpenAI_Codex, but that's the tool used, not affecting the PR's content directly.
+
+Potential risks: Since it's adding drag functionality, if there are edge cases not handled, like different window states or platform-specific behaviors, that could be an issue. But the diff includes handling PositionChanged events and calling appropriate methods, so maybe it's okay. The code seems to be properly integrating with existing structures like HostWindow and Window factories.
+
+The rejection signals: The description is concise but not vague. The diff size is moderate, and tests are mentioned. There's no mention of missing test coverage, and the metadata says Touches tests is True. The File entropy isn't too high, so it's not a sprawling change. The PR doesn't have related issues, but since it's a new feature, maybe that's okay unless the project requires issues for all changes. 
+
+Considering all factors, the PR seems well-targeted, has tests, and the code changes are focused on enabling drag functionality. No obvious red flags like missing tests, vague descriptions, or experimental flags. The rejection probability should be low. Maybe around 0.2 or lower. Hence, prediction is accepted.
+"
+3192244623,0,accepted,0.0731,0,"Okay, let's tackle this PR evaluation step by step. First, I'll look at the title and description. The title is ""docs: update Vitest recommendations,"" which clearly indicates it's a documentation change. The description mentions addressing a GitHub issue (#10548) and outlines changes like replacing ""workspaces"" with ""projects"" terminology, introducing a new shared config package, and updating examples. The user also provided testing instructions, which is good.
+
+Next, checking the metadata. The task type is ""docs,"" which aligns with the title. The submission has 11 files changed, which seems reasonable for documentation updates. The file entropy is 1.9445, which isn't extremely high, so maybe the changes are spread across a few files but not too fragmented. The description length is adequate, and there's no mention of experimental or empty description flags, so that's positive.
+
+Looking at the diff, the changes are mostly in markdown files (docs) and some configuration files. The user added a new package (@repo/vitest-config) to handle shared configurations, which is a best practice. They also updated terminology from ""workspaces"" to ""projects"" as per Vitest's deprecation. The code snippets and examples look updated correctly. The diff doesn't show any obvious errors, but I notice some repeated content in the diff text provided, which might be a formatting issue but doesn't affect the actual content.
+
+Now considering rejection signals. The PR is a documentation update, so the main concerns would be accuracy and clarity. The user addressed an existing issue, which is a plus. The changes are well-explained in the description. The new shared config package promotes better practices, which is a good addition. The testing instructions are straightforward and focused on verifying the documentation changes.
+
+There's no mention of experimental language, vague descriptions, or mismatch between title/description and the diff. The diff shows updates to the docs and config files as described. The PR touches tests and configuration, which is okay for a documentation PR if it's about setup instructions. The related issues count is zero, but the description references an issue, so maybe that's a minor inconsistency. However, since it's a docs PR, that might not be critical.
+
+The submission hour and day don't seem to affect the outcome here. The rejection probability factors: since it's a documentation update with clear changes, touches tests and config appropriately, and addresses an issue, the signals are mostly positive. The main risk could be if the changes introduced errors in the documentation, but the user provided testing steps and the diff looks accurate.
+
+Considering all factors, there's no strong signal for rejection. The PR seems well-structured and addresses valid improvements. The probability should be low.
+"
+3196981192,0,accepted,0.1739,0,"Okay, let's tackle this PR evaluation step by step. First, I'll look at the title and description. The title mentions adding URL depth validation for crawl requests, which sounds like a feature improvement. The description is detailed, explaining the changes made, including validation checks, test coverage, and a clear checklist for reviewers. The user even provided a Mermaid diagram to visualize the flow, which is a good sign of thoroughness.
+
+Next, checking the metadata. The PR is flagged as a 'feat' type, which aligns with the title. The description length is over 4000 characters, indicating thorough documentation. The metadata shows that tests were touched, which is good because adding validation should include tests. The file entropy is moderate, suggesting changes across a few files without too much complexity. The agent is Devin, which I recall has a decent track record, and it's not marked experimental or having an empty description.
+
+Now, looking at the diff. The changes include adding validation in the schema, modifying test cases, and some refactoring. The test additions cover both success and failure scenarios, which is great. The code seems to handle the validation by comparing the URL depth with maxDepth, and there's a helper function getURLDepth. The diff shows that existing functions like crawlStartRaw were refactored to use existing utilities, which reduces duplication. The tests check both the error messages and the correct paths in the response, which aligns with the validation setup.
+
+Possible issues? The diff is truncated, but the provided parts look solid. The description mentions relying on getURLDepth's accuracy, so maybe the reviewer should verify that function, but that's part of their checklist. The tests seem comprehensive, and there's no mention of breaking existing functionality. The related issues count is zero, but the task is linked to ENG-2617, so maybe that's tracked elsewhere.
+
+Overall, the PR has a clear purpose, good documentation, appropriate tests, and the code changes look focused. The metadata signals are positive, and the diff shows necessary modifications without red flags like config-only changes or missing tests. The rejection probability should be low, so I'd lean towards accepted.
+"
+3204995137,0,rejected,0.7432,1,"Alright, let's tackle this PR evaluation. The title mentions implementing a unified project work directory using the `@project://.promptx/cwd` protocol. The description is quite detailed, outlining the core features, design rationale, technical implementation, and testing. The metadata shows it's a feature addition in JavaScript with some additions and deletions. The diff shows changes in the `ToolSandbox` class, adding methods like `resolveProtocolPath` and modifying how sandbox paths are handled.
+
+First, looking at the text: The description is thorough, explaining the problem, solution, and benefits. It mentions testing, though ""Touches tests: False"" in metadata might be a red flag. The title matches the diff scope since the code changes are about setting up the new protocol path and resolving it. The description doesn't seem vague, and there's no experimental language. The author included a lot of details, which is good.
+
+Next, metadata: The task type is ""feat"" which aligns with the title. The description length is long, which is okay. The key points here are ""Touches tests: False"". Even though the description mentions testing, the metadata says tests weren't touched, which might indicate missing test coverage. Also, ""Related issues: 0"" could be a concern if this is a major change without corresponding issues. File entropy is 0.0, meaning only one file changed, which is manageable. Since it's a feature addition with some code changes, the lack of tests might raise the rejection probability.
+
+Looking at the diff: The changes are in creating and resolving protocol paths, especially handling `@project://`. The new `resolveProtocolPath` method parses the protocol and ensures the directory exists. The `createSandbox` method now uses this new resolution. However, the diff shows that tests weren't modified, so even though the description claims testing was done, the code changes don't reflect that. That inconsistency is a problem. Also, the method uses `require('fs').promises`, but in a class, maybe there's a better way to handle that, but that's more of a code quality issue than a rejection reason.
+
+Rejection signals: The metadata says no tests were touched, which is a strong signal. Even if the author claims tests were done, the diff doesn't show any test files changed, so it's unclear if tests exist. Also, the description mentions ""测试验证"" but without actual test files changed, it might be missing. Another point is the lack of related issues, but since it's a new feature, maybe that's acceptable. The description is clear, so no issues there. The diff is focused, so title and diff align.
+
+Acceptance signals: The description is detailed, the diff is in one file (low entropy), and the problem seems well-understood. The protocol path approach is clean. But the missing tests are a big issue. Without tests, especially for a feature this structural, the PR might be rejected.
+
+Putting it all together: The main red flags are ""Touches tests: False"" and the absence of test changes in the diff despite the description mentioning testing. That inconsistency is a strong rejection signal. The feature itself is good, but without proper tests, maintainers might be hesitant. The rest looks okay. So the rejection probability should be high, maybe around 0.7 or higher. Since 0.5 and above is rejected, this would be rejected.
+"
+3222235753,0,rejected,0.7213,1,"Okay, let's tackle this PR evaluation. The title is ""Restrict highest_value sort to open tickets only"", which sounds like a bug fix related to sorting options for tickets. The description goes into detail about the problem and solution. Let me start by breaking down the provided information.
+
+First, the problem stated is an infinite loading issue when viewing closed tickets because the ""highest_value"" sort wasn't optimized for closed tickets. The solution involves changes in the backend (TRPC router), frontend (sort options UI), and search logic to ensure closed tickets don't use that sort. 
+
+Looking at the metadata: the task type is ""fix"", which aligns with the title. The description length is quite long, which is good for clarity. The PR touches three files with 14 additions and 8 deletions, and it's marked as touching tests, which is positive. The file entropy is 1.63, which isn't too high, so maybe the changes are spread across a few files but not too many.
+
+Now, checking the diff. The TRPC router adjusts the defaultSort conditionally based on whether the status includes ""open"". The frontend hides the ""highest_value"" option if the status is set to ""closed"". The search logic now checks if it's closed tickets only to prevent the expensive sort. 
+
+Wait, in the diff for the backend search logic, there's a line where `isClosedTicketsOnly` is defined but then the condition uses `isOpenTicketsOnly`? That might be a typo. Let me check again. 
+
+Looking at the diff for searchConversations.ts:
+
+Original line had `isClosedTicketsOnly` but then the condition is `isOpenTicketsOnly` and checks against that. That could be an error. If `isClosedTicketsOnly` is true, but the code is checking `isOpenTicketsOnly`, that might invert the condition. That's a possible bug here. 
+
+Also, in the frontend part, the sort options were conditionally added based on `searchParams.status !== ""closed""`, but in the diff, there's a line that might have been changed incorrectly. The user mentioned that closed tickets shouldn't have the option, so if the status is ""closed"", it should exclude ""highest_value"". The code in the diff seems to have a condition that might have flipped the logic. 
+
+Another thing: the description mentions that closed tickets should default to ""newest"" sort. The TRPC router's defaultSort is set based on whether the input status includes ""open"". If the user is viewing closed tickets (status is ""closed""), then the default should be ""newest"". The code in the router's defaultSort uses `!input.status || input.status.includes(""open"")` which would set defaultSort to ""highest_value"" only if status is not set (all tickets) or includes open. So for closed only, it would default to ""newest"", which is correct. 
+
+But in the search logic, the orderBy is adjusted based on isOpenTicketsOnly, which might have been a mistake if the variable was named incorrectly. If there's a typo like using `isOpenTicketsOnly` instead of `isClosedTicketsOnly`, that could lead to incorrect sorting. For example, if the user is viewing closed tickets, `isOpenTicketsOnly` would be false, but the code might be using that variable incorrectly. 
+
+The description also mentions that the changes are untested due to Docker/Redis issues, which is a red flag. The PR's author couldn't test locally, so there might be hidden bugs. 
+
+In the metadata, the ""Touches tests"" is True, but the description's testing section mentions that some tests might fail (like the `yarn test` failing due to a missing package). Wait, actually in the metadata for this PR, ""Touches tests: True"" so maybe they did add tests? The user's own testing checklist includes manual steps, but automated tests might be missing or failing. 
+
+The rejection signals include the possibility of a typo in variable names leading to incorrect logic. Since the diff shows potential code errors (like variable name mismatches), that's a strong signal. Additionally, the lack of proper testing (untested due to environment issues) is another negative point. 
+
+The PR has a detailed description and seems to address a real issue, but the code might have bugs. The diff's inconsistency in variable names could lead to the ""highest_value"" sort still being applied to closed tickets, causing the original problem. 
+
+Considering all factors: the problem is clear, the approach makes sense, but the code might have errors. The untested status adds risk. The metadata's ""Related issues: 0"" means no linked issues, but maybe the fix addresses an internal report. 
+
+The rejection probability should be moderate to high. Since there's a possible typo in the code and untested changes, I'd lean towards rejection. Maybe around 0.7 or higher. 
+
+Wait, but the metadata says ""Touches tests: True"", so maybe tests were added. Let me check the diff again for tests. The diff shows changes in three files: frontend component, TRPC router, and search logic. The test files aren't shown here, but maybe the changes include tests. The user's testing checklist mentions manual steps, but automated tests might exist. 
+
+However, the note in the description says ""Unable to test locally due to Docker/Redis permission problems, so changes are untested"". That's a big issue because the code hasn't been validated. Even if tests were written, if they can't run locally, maybe they're not reliable. 
+
+Putting it all together: the PR has a good explanation and logical approach but contains potential code errors (variable name mismatches) and was untested. The rejection probability should be high, maybe around 0.8. 
+
+Wait, in the diff for the searchConversations function, the line with `isOpenTicketsOnly` might be incorrect. The previous line defines `isClosedTicketsOnly`, but then they use `isOpenTicketsOnly` which wasn't defined. That's a syntax error. Wait, looking again:
+
+In the diff, the code shows:
+
+const isClosedTicketsOnly = filters.status?.length === 1 && filters.status[0] === ""closed"";
+const isOpenTicketsOnly = filters.status?.length === 1 && filters.status[0] === ""open"";
+
+Ah, no, maybe they did define it. Wait in the diff, the code after the change might have both variables. Let me re-examine the diff section for searchConversations:
+
+In the diff, the code now has:
+
+const isClosedTicketsOnly = filters.status?.length === 1 && filters.status[0] === ""closed"";
+const isOpenTicketsOnly = filters.status?.length === 1 && filters.status[0] === ""open"";
+
+Then, the orderBy is adjusted based on isOpenTicketsOnly. But the condition for the metadata check uses `isOpenTicketsOnly`:
+
+if (metadataEnabled && (filters.sort === ""highest_value"" || !filters.sort) && isOpenTicketsOnly) {
+
+Wait, that would mean that highest_value sorting is only allowed when it's open tickets only. That aligns with the requirement. But the variable names seem correct here. Maybe I misread earlier. 
+
+Hmm, perhaps I was mistaken about the variable name error. Let me check the diff again. The user might have correctly defined both variables. So the code change there is okay. 
+
+Another point: the frontend's sortOptions condition was changed to include the option only when the status isn't closed. The TRPC router sets defaultSort properly. 
+
+The main issue then is the lack of testing. Since the author couldn't test due to environment issues, there's a risk. However, the code changes look logically correct. The description is thorough, and the problem is well-explained. 
+
+In that case, maybe the rejection probability is lower. Since the code seems correct and the approach is right, but untested, maybe 0.4? But the system's guidelines say to prioritize untested changes as a rejection signal. 
+
+The metadata has ""Related issues: 0"" which is neutral. The task type is fix, which is good. The description is long and detailed, which is positive. 
+
+Considering the diff's changes are precise and address the problem without obvious errors (after correcting my initial misread), maybe the probability is lower. But the untested status is a big minus. 
+
+The guidelines say that untested changes with a functional diff (like this one) and no tests would be a rejection signal. Since ""Touches tests: True"" might mean tests were added, but the user couldn't run them, it's ambiguous. 
+
+Overall, I think the rejection probability is moderate. Maybe around 0.6. But since the code seems correct and the problem is critical (infinite loading), the team might accept it despite the testing issue. However, the system's rules say to consider untested changes as a rejection signal. 
+
+Hmm, the user's own note says ""changes are untested"" which is a strong signal. So I think the rejection probability should be higher, like 0.7. 
+
+Final decision: rejection probability 0.72, so rejected.
+"
+3213091409,0,rejected,0.7283,1,"Okay, let's tackle this PR evaluation. The title is ""Fix WebViewSample package conditions,"" which sounds like a straightforward fix. The description mentions quoting architecture strings in the package reference conditions. That makes sense because unquoted values can sometimes cause issues in MSBuild conditions, especially if the property includes spaces or special characters.
+
+Looking at the metadata, the task type is 'fix', which aligns with the title. The changes are minor—just adding quotes around the architecture names. The additions and deletions are each 3, so it's a small diff. The PR touches tests but both test commands in the description mention failures. The first test command fails with an invalid argument, and the second can't download dependencies. That's a red flag because the tests aren't passing. 
+
+The diff shows that the conditions in the .csproj file now have quotes around the architecture values like 'x86_64', 'X64', and 'Arm64'. This is likely fixing a condition evaluation issue where the unquoted strings weren't matching correctly. However, the testing part is concerning because if the tests aren't passing, the fix might not be complete or there could be other underlying issues.
+
+The metadata also shows that the PR was submitted at 16:00 on a Tuesday, which doesn't seem unusual. The repository has 1.2k stars and 124 forks, indicating some activity. The agent here is OpenAI_Codex, which might mean it's an AI-generated PR. The description includes a link to a task on chatgpt.com, which might be part of their system, but that's not necessarily a problem.
+
+The main issues here are the failed tests. Even though the code change is minor and logical, if the tests aren't passing, there's a risk the fix introduces new problems or doesn't fully resolve the issue. The description mentions that `./build.sh` fails to download dependencies, which could be an environment issue, but without more context, it's safer to assume the PR might not be thoroughly tested. Additionally, the test commands provided in the description are noted as failing, which might mean the author didn't verify the fix properly.
+
+Considering all this, the PR has a valid fix but lacks proper testing. Since the tests are failing and there's no mention of fixing those, the probability of rejection is high. The rejection signals here are the failed tests and potential incomplete validation. Even though the code change is small, without passing tests, it's risky to merge. Therefore, the rejection probability should be relatively high, maybe around 0.7 or higher.
+"
+3225245522,1,accepted,0.3452,0,"Okay, let's start by looking at the provided PR details. The title mentions adding helper extensions for the Dock API, which sounds like a feature improvement. The description explains the changes: adding FactoryUserExtensions with helper methods and updating documentation in the MVVM guide. Testing commands are provided, but one of them fails with invalid arguments. 
+
+Looking at the metadata, the task type is ""feat"" which is appropriate for a feature addition. The description length is reasonable, and there's no mention of experimental or empty description flags. The PR touches two files, both seem related to the changes described. The diff shows new code in FactoryUserExtensions, which are helper methods, and an update to the documentation.
+
+Now, checking the diff details. The new methods like AddAndActivate, CloseActiveDockable, and FloatDockableWindow are straightforward extensions that simplify common operations. The code includes null checks and proper exception handling with ArgumentNullExceptions. The documentation updates in the markdown file list the new helpers, which is good for users.
+
+Possible issues: The test command `dotnet test --no-build` failed due to invalid arguments. That might be a problem, but the PR's metadata says ""Touches tests: True"", so maybe the tests are present but there was a typo in the command. The description mentions that the test failed, which could indicate incomplete testing. Also, the PR has no related issues, which might be a minor point but not a major red flag.
+
+Considering the signals for rejection: The description is clear, the diff aligns with the title, and the changes are focused. The test failure in the description is concerning, but maybe it's a typo. Since the metadata says tests are touched, perhaps the actual tests are there but the command was mistyped. The code looks safe with proper checks. The additions are useful helpers, and there's no sign of duplication or experimental code.
+
+The rejection probability might be low because the PR seems well-structured, with clear intent and proper documentation. The main risk is the test failure, but if it's a typo and the tests actually pass, then it's acceptable. Since the metadata indicates tests are touched, I'll lean towards acceptance unless there's a stronger signal against it.
+"
+3206197492,0,accepted,0.1203,0,"Okay, let me try to figure out whether this PR should be accepted or rejected based on the information provided.
+
+First, looking at the title and description: The PR is about migrating from `@parcel/watcher` to `chokidar` to fix a double build issue on Windows. The description is pretty detailed, explaining the problem, solution, changes made, verification steps, and impact. The user mentions that this fixes an issue (#611), which is good because it references a specific problem. The description doesn't seem vague or experimental, which is a positive sign.
+
+Now checking the metadata. The task type is ""fix"", which aligns with the title. The description length is sufficient (1933 characters), and there's a related issue (1), which is a plus. The metadata shows that the PR touches tests and CI, which is important for a fix. The file entropy is 2.0678, which might indicate some complexity, but since it's a migration, that's expected. The agent is Copilot, but since the user provided a thorough description and the fix addresses a specific problem, that's okay.
+
+Looking at the diff: The changes involve replacing `@parcel/watcher` with `chokidar`, rewriting the watcher implementation, and updating tests. The diff includes code for setting up the watcher with Chokidar, mapping events, and handling errors. The tests seem updated to work with the new library, and there's a mention of maintaining test coverage. The package.json changes show the dependency swap, which is straightforward.
+
+Now considering rejection signals:
+- The description is clear and problem-focused, so no vague or experimental language.
+- The title matches the diff scope (migrating the watcher library).
+- The metadata has `Related issues: 1`, which is good because it addresses a known issue.
+- The diff includes tests (`Touches tests: True`), and the description mentions tests passing.
+- The change is significant but seems well-contained, with no obvious red flags like config-only changes or trivial fixes without value.
+
+Possible concerns: The diff is a bit large (204 additions, 125 deletions), but since it's a migration, that's reasonable. The user mentions maintaining the same API and passing all tests, which reduces risk. The fact that it fixes a specific issue with a reference to the issue number adds credibility.
+
+The rejection probability here should be low because the PR addresses a concrete problem with a clear solution, includes tests, references an issue, and the code changes are targeted. The metadata and description don't indicate any red flags. Therefore, the prediction should be ""accepted"".
+"
+3203043702,0,rejected,0.8992,1,"Okay, let's analyze this PR step by step. The title says ""Try to implement nightly app publishing"" which sounds like an attempt to set up a nightly build and publish process. The description mentions changes made by Cursor, a background composer, and an important note about modifying a workflow file. The metadata shows that the task type is ""ci"" and it touches CI configuration. 
+
+Looking at the diff, there's a change in the `nightly-publish.yml` file. The main alteration is removing a condition from the `publish-nightly` job. The original condition was checking if the event was a workflow dispatch or if the previous workflow run's conclusion was a success. The new condition checks if it's a workflow dispatch or if the head branch is main. 
+
+Wait, but in the diff, there are conflicting changes. The user shows two different versions of the `if` condition. The first part removes the condition and adds a comment, while the second part removes the comment and the new condition. This might be a mistake in the diff truncation. The net result seems to be removing the success check and allowing the job to run on every commit to main, which could lead to unstable builds being published nightly without proper QA checks.
+
+The metadata also notes that there are no related issues, which is a red flag. Removing safeguards like requiring a successful workflow run before publishing might introduce broken builds. The description mentions the change was made by an automated tool (Cursor), but without explicit approval or linking to an issue, it's risky. The addition of the `if` condition that only checks the branch might bypass necessary checks, leading to potential issues.
+
+Considering the signals: The PR touches CI, which is a metadata signal. The description is generated by an automated tool, which might be vague. The diff shows a critical change that could lead to untested code being published. The lack of related issues and tests being untouched (touches_tests: False) adds to the risk. The task type is ""ci"" which is common, but the actual change's impact is significant. 
+
+The rejection probability should be high because removing the condition could cause unstable publishes. The description doesn't clearly justify why the condition is removed, and there's no mention of tests or safeguards. The diff's ambiguity and potential for unintended consequences make this PR risky. Hence, it's likely to be rejected.
+"
+3225229319,1,accepted,0.3471,0,"Alright, let's tackle this pull request evaluation. The PR is titled ""Introduce basic MDI window sample"" and the description mentions adding support for MDI child windows via a new `MdiHostWindow`, exposing theme resources for it, and a new sample called `DockMdiSample` demonstrating docking with MDI windows in XAML. The user provided all the necessary sections: title_and_description, metadata, and diff_text.
+
+First, I need to analyze the text signals. The title and description are clear and concise, explaining the changes. The description includes a summary of the changes, testing steps, and a note about the task being generated by Codex. There's no vague or experimental language here. The title matches the scope of the diff, which adds new files and configurations for the MDI sample. The testing command mentioned (`git status --short`) seems a bit odd because it's a standard Git command and not specific to testing the functionality. That might be a red flag, but maybe it's a placeholder or oversight.
+
+Next, looking at the metadata. The task type is 'feat' (feature), which aligns with the title. The PR has 12 files changed, which is a moderate number. The additions are 547 lines, no deletions. The metadata shows that it touches tests, which is good, but the description's testing command is concerning. The file entropy is 1.86, indicating some complexity, but not extremely high. The absence of related issues might be a minor issue, but not a dealbreaker if the feature is self-contained. The submission hour and day don't seem relevant here.
+
+Now the diff. The diff includes new files like the application's App.xaml, code-behind, project file, and the main view with XAML. The code adds a new sample project with MDI functionality, which seems focused. However, the diff is truncated, so I can't see the full implementation. But the provided part looks structured. The XAML defines a menu, dock control, and various panes, which aligns with the description. The code-behind handles the application setup and references necessary projects. The project file includes necessary dependencies. There's no obvious duplication or config-only changes here; it's a new feature.
+
+Considering the rejection signals: The description's testing step is weak, but the presence of a sample project and proper structure might mitigate that. The diff seems relevant and adds a new sample, which is a common contribution type. The metadata's related_issues=0 isn't ideal, but if the feature is part of planned development, it might be acceptable. The lack of detailed test steps beyond a Git command is concerning, but maybe the sample itself serves as a test case. The PR doesn't have experimental flags, and the description isn't vague.
+
+On the acceptance side, the description clearly explains the change, the diff aligns with the title, and there's no experimental language. The sample project's addition is a positive signal. However, the testing part is weak, which could lead to rejection. But since the PR is a feature sample and the diff looks well-structured, maybe the maintainers would accept it despite the testing note. Alternatively, the test command might be an error, but the presence of a sample might suffice for acceptance. The rejection probability should be lower, but not too low. Maybe around 0.3 or 0.4. However, considering the testing step's oddness, perhaps a bit higher. Wait, the metadata says Touches tests: True, which might mean there are tests added. The diff shows a new project with XAML and code, but maybe the tests are part of the sample's functionality. The user might have intended the sample to be the test case. So maybe the testing part is okay.
+
+Overall, the PR seems legitimate and adds a new feature sample. The main concerns are the testing command and lack of related issues, but those might not be critical for a sample. Thus, the rejection probability should be low, leading to acceptance.
+"
+3200511935,0,accepted,0.1234,0,"Okay, let's tackle this. The user provided a pull request for a Go project aiming to reduce log spam by changing certain log levels from INFO to DEBUG. The PR description explains the problem, solution, changes made, impact, and testing. The metadata shows the task type is 'feat', which is a feature enhancement. The diff includes changes in log levels and some test adjustments.
+
+First, I need to check for any red flags. The description is detailed, mentions specific log messages being adjusted, and includes testing. The metadata indicates related issues (Fixes #2130), which is good. The diff shows targeted changes in log statements, which aligns with the description. 
+
+Looking at the rejection criteria: 
+
+1. **Text signals**: The title and description are clear. The title mentions 'feat' and the change is specific. The description doesn't have vague language. The diff matches the scope (changing log levels). No mismatch here.
+
+2. **Metadata signals**: The task is a feature, which is acceptable. File entropy is low (1.14), indicating fewer files changed. Touches tests is true, so that's positive. Related issues exist, which is a plus. 
+
+3. **Diff signals**: The changes are minor but relevant. The test adjustments include handling firewall issues, which might be part of the test setup. The main code changes are log level adjustments, which are safe. No signs of bugs or API breaks. 
+
+Potential issues: The test section mentions firewall blocks, but that might be part of the test environment and not the PR's fault. The user included a warning about firewall rules, which could be a note for the maintainers but doesn't affect the PR's quality. 
+
+Since the changes are targeted, described well, and tests pass, the rejection probability should be low. The metadata and diff support acceptance. No strong signals for rejection here.
+"
+3221166299,1,rejected,0.8912,1,"Okay, let me tackle this PR evaluation step by step. The PR is titled ""Implement missing playwright selectors"" and the description is pretty short, just mentioning that it contains changes generated by Cursor. The metadata shows it's a Rust project with a NOASSERTION license, and the task type is ""feat"". The diff is quite large with 864 additions and 34 deletions across 7 files. 
+
+First, looking at the title and description. The title mentions implementing missing selectors, which sounds like a feature addition. The description is brief but not vague. However, the fact that it's auto-generated by Cursor might be a flag, but the metadata says ""Is experimental"" is False and ""Empty description"" is False, so that's okay.
+
+Now, the metadata: 12 commits, which is a lot for a feature addition. Usually, having many commits could indicate a lack of focus, but maybe it's necessary. The files changed have high entropy (2.88), which suggests multiple files are touched, possibly in different areas. The PR doesn't touch tests or CI, which is a concern because adding new features without tests can be risky. Also, there are no related issues linked, which might mean the change isn't tied to any specific problem or request, making it harder to validate the necessity.
+
+Looking at the diff. The changes include adding new methods like `nth` for locators, handling text exact matches, and some selector parsing. The code seems to be extending the selector capabilities, which aligns with the title. However, the diff is truncated, so I can't see everything, but the parts shown look technical and related to the feature. 
+
+One thing to note is that the PR adds a lot of code (864 additions) but only removes 34 lines. That's a big addition, and without tests, it's a red flag. The metadata says ""Touches tests: False"", so the new features might not be covered by tests. That's a strong reason to reject because without tests, the changes could introduce bugs or break existing functionality.
+
+Also, the description is very short and doesn't explain why these selectors are needed or how they're used. The commit messages might be part of the problem if they're not descriptive. The PR's lack of explanation could make it harder for maintainers to review and understand the changes.
+
+Another point is the high number of commits (12) and files changed (7 with high entropy). That suggests the PR might be doing more than just adding selectors, possibly touching multiple parts of the codebase. Without clear commit messages or a detailed description, this could be a sign of a large, unstructured change that's hard to review.
+
+The diff shows some error handling and new selectors like TextExact, which seems okay, but again, without tests, it's hard to trust. Also, the fact that the PR is generated by an AI tool (Cursor) might make maintainers cautious, especially if there's no manual testing mentioned.
+
+Considering all factors: the PR adds a lot of code without tests, has a vague description, multiple files touched, and no related issues. The metadata flags like no test touches and high entropy contribute to higher rejection chances. The rejection probability should be on the higher side.
+"
+3225540340,0,accepted,0.2897,0,"Okay, let me try to work through this step by step. So the user provided a pull request for a feature that adds the ability to get group info from an invitation link in a WhatsApp-like service. The title is clear and the description is pretty detailed, mentioning the purpose, changes made, testing, and related issues. The metadata shows that there are 17 files changed, which is a decent number, and the diff text is quite extensive, including new API endpoints and documentation.
+
+First, looking at the text signals. The description is thorough and explains the problem, solution, and testing. There's a clear connection between the title and the diff since the diff includes the new API endpoint and related code. The description doesn't seem vague or experimental, so that's a good sign.
+
+Next, the metadata. The task type is 'feat', which makes sense for a new feature. There are related issues (1), which is positive because it shows alignment with existing requests. The description length is over 2000 characters, indicating thorough documentation. The file entropy is 2.46, which might mean the changes are spread across several files, but since it's a new feature, that's expected. Touches tests is true, so there's some test coverage. The additions and deletions are significant (716 vs 357), but again, for a feature like this, that might be necessary.
+
+Looking at the diff, the code includes new endpoints, validation, and documentation. The example code snippets in the diff suggest that the implementation is comprehensive. The error handling and security considerations are mentioned, which is good. However, the diff is truncated, so there might be more code not shown here. But the visible parts look well-structured.
+
+Potential issues? The diff shows a lot of additions, but since it's a new feature, that's okay. The fact that it touches 17 files might be a point, but the metadata's file entropy isn't extremely high. The presence of tests is good, so that's a plus. The description references an issue it closes, which is good practice.
+
+Hmm, but maybe the diff's truncation is a problem. The user mentioned that the diff is truncated, so we can't see the full code. If the PR is large, but the diff is cut off, that could be a red flag. However, the user's metadata says 'Touches tests: True', so maybe the tests are present. The description also mentions testing, so that's covered.
+
+Another point: the feature adds a new API endpoint, which requires proper security measures. The description mentions authentication and rate limiting considerations, so that's addressed. The code examples in the diff look okay, but without seeing the full code, it's hard to tell if there are any bugs.
+
+The metadata shows that the submission hour is 16 (4 PM), which is normal. The language is Go, and the agent is Cursor, which is an AI tool. The project has a decent number of stars and forks, so it's an active repo. The PR has 5 commits, which is reasonable for a feature.
+
+The rejection signals: Is there any experimental language? The title and description don't indicate that. The description is detailed, so no empty description. The diff's size is large but justified. The presence of tests and related issues is good. The file entropy is higher, but maybe acceptable for a feature adding new components.
+
+So putting it all together, the PR seems well-structured, has proper documentation, addresses an existing issue, includes tests, and the diff shows comprehensive changes. The main possible issues are the diff being truncated, but since the metadata says tests are touched, and the description includes testing steps, it's likely okay. Therefore, the rejection probability should be low.
+"
+3226192286,0,rejected,0.6341,1,"Okay, let me try to figure this out step by step. The user provided a pull request (PR) to evaluate whether it's likely to be rejected or accepted. The PR is titled ""Update iPod videos list"" and the description says they added two new video entries to the top of `ipod-videos.json`. The metadata shows some flags like `Touches tests: False`, `File entropy: 1.362`, and there are 8 files changed with a mix of additions and deletions.
+
+First, I need to check the text of the PR. The title and description are straightforward, mentioning adding new videos. But the diff shows more changes than just adding entries to the JSON file. There are modifications in TypeScript files related to video handling, like `useVideoStore`, `VideosAppComponent`, and other components. The diff also mentions changes in how the current video is tracked—switching from an index to an ID, which might be a structural change. 
+
+Looking at the metadata, `Touches tests: False` is a red flag. The PR modifies core functionality (how videos are managed) but there's no mention of tests being added or updated. That increases the rejection probability because without tests, there's a higher risk of introducing bugs. 
+
+The `File entropy` is 1.362, which isn't extremely high, but the diff shows changes across 8 files. The PR is flagged as a 'feat' type, which is okay, but the scope seems broader than just adding entries. The description doesn't explain the code changes beyond the JSON update, which might indicate a mismatch between the title/description and the actual code changes. 
+
+In the diff, there's a section where the video index management is changed to use IDs instead of indices. This could be a significant refactor, but the PR's description doesn't mention this. That's a problem because the commit message and description should reflect all major changes. The code changes might also introduce bugs, especially without tests. 
+
+Additionally, the PR has `Related issues: 0`, so there's no reference to any existing problem it's solving beyond just updating the list. The addition of new videos might be valid, but the broader code changes without test coverage or explanation could be risky. 
+
+Considering all these factors: the mismatch between the description and the code changes, lack of tests, and potential for bugs from structural changes, the PR is likely to be rejected. The rejection probability should be high enough to tip over 0.5, leading to a 'rejected' prediction.
+"
+3194014636,0,rejected,0.7089,1,"Okay, let me start by looking at this PR to determine if it should be accepted or rejected. The title says making the worker's Express server port configurable via an environment variable. That sounds like a good idea for flexibility. The description mentions that the main API server and worker both use the same PORT variable, which could cause conflicts. Hmm, that's a potential issue.
+
+Looking at the metadata, the task type is 'feat', so it's a feature addition. The description is detailed, with a checklist and tests, which is good. The PR has related issues set to 0, but there's a note about a Linear ticket ENG-2586. The description length is long, which is positive for clarity.
+
+The diff shows changes in the worker's server setup to use process.env.PORT with a default of 3005. There's also an update to the .env file noting that PORT is used by both the main API and worker. The tests added check the PORT behavior. However, in the metadata, the 'Touches tests' is True, so that's a plus.
+
+Wait, but there's a note in the description about potential port conflicts if both the main API and worker use the same PORT variable. That could be a problem. The PR might not have addressed that conflict, just moving both to use the same variable. If someone sets PORT for the main app, the worker would use the same, leading to conflicts. The reviewer is asked to test for this, but maybe the PR didn't fix it, just introduced the possibility. That's a risk.
+
+The diff also shows changes in the CI configuration files, setting PORT explicitly in some jobs. That might mitigate the conflict by separating the ports in CI, but in a BYOC environment, users might not set different ports. The problem remains that the PORT variable is shared between the main and worker, which could lead to issues if not managed properly. 
+
+The description mentions that the implementation follows the same pattern as the main API, which is good for consistency, but if the main uses PORT and the worker now does too, that's a flaw. Maybe the worker should have its own variable like WORKER_PORT instead. The current approach might be too simplistic, leading to potential deployment issues.
+
+Looking at the tests added, they check if the PORT is respected, which is good. But maybe there's no test for the conflict scenario. The test plan suggests testing conflicts, but the PR might not have resolved that, just documented it. The reviewer needs to ensure that the code handles this, but the PR as is might be introducing a problem.
+
+The rejection signals include potential for port conflicts and maybe incomplete handling. The description does note this as a ""Note"" but doesn't provide a solution. The PR might be missing a way to separate the ports, making it risky. 
+
+Considering the metadata, the File entropy is 1.4456, which isn't too high, so maybe the changes are manageable. The agent is Devin, which might be trusted, but the problem of shared PORT is critical. The user's note about the potential conflict is a red flag. 
+
+The rejection probability might be high because of the possible port conflict, which could lead to deployment failures if not addressed. The PR's current approach might be insufficient without a way to configure the worker's port independently. So, the PR might be rejected unless there's a way to set a separate port for the worker.
+"
+3214122373,0,accepted,0.1823,0,"Okay, let's tackle this PR evaluation step by step. First, I need to look at the title and description. The title mentions implementing a simpler library node expansion interface, which sounds like a feature improvement. The description is detailed, explaining the problem, solution, key features, and testing. It references an issue (#2076) and mentions backward compatibility, which is good.
+
+Next, the metadata. The task type is 'feat' which aligns with the title. The language is Python, which makes sense given the context. The project has a BSD-3-Clause license, so no issues there. The PR has additions and deletions, which is normal for a feature change. The description length is sufficient, and there's a related issue, which is a positive signal. Touches tests is true, so testing was done. The file entropy is moderate, which might mean some complexity but not too high. Not experimental and description isn't empty. 
+
+Looking at the diff: The changes involve modifying existing methods and adding a new method (expand_library_node) in the SDFGState class. The diff shows refactoring the expand method in LibraryNode to handle both old and new interfaces, which makes sense for backward compatibility. The new method in SDFGState simplifies the expansion process. The test file added shows examples using both old and new interfaces, which is good for validation.
+
+Now, considering the rejection signals. The description is clear and explains the changes well. The title matches the diff scope—introducing new methods and refactoring existing ones. The metadata shows related issues, which is good. The diff includes tests, so that's a positive. The addition of new tests and comprehensive coverage (8 tests mentioned) is strong. The implementation seems well thought out with error handling and backward compatibility.
+
+Possible concerns: The diff has a lot of changes (622 additions, 319 deletions), but since it's a feature addition and refactoring, that might be okay. The fact that they maintained backward compatibility reduces risk. The description mentions comprehensive testing, which is addressed in the diff with a new test file. The new methods have clear docstrings and examples, which is good for usability.
+
+No signs of experimental language or vague descriptions. The metadata flags touches tests as true, so that's covered. The presence of a related issue (Fixes #2076) shows that this addresses a specific request, which is positive. The submission hour is 0, but that's probably not a big issue unless the project has specific policies, which we don't know here.
+
+Overall, the PR seems well-structured, addresses a valid problem with clear improvements, includes tests, maintains backward compatibility, and the description is thorough. I don't see strong rejection signals here. The probability should be low, so accepted.
+"
+3189781191,0,accepted,0.1893,0,"Alright, let's tackle this PR evaluation step by step. First, I'll start by looking at the title and description. The title is ""Update PSReadLine to v2.4.2-beta2,"" which clearly states the purpose. The description mentions updating the version in the build script and adding a changelog entry. The verification section lists checks they did, like confirming the version exists and validating the build script syntax. That's good because it shows some due diligence.
+
+Now, checking the metadata. The task type is ""build,"" which makes sense for a version update. The related issues count is 1, which is good because it references an existing issue (Fixes #2239), indicating this PR is addressing a specific request. The description isn't empty, and there's no experimental flag. The files changed are minimal (2 files with 8 additions and 3 deletions), which is low impact, usually a positive sign.
+
+Looking at the diff, the changes are straightforward: updating the version number in the PowerShell script and adjusting the changelog. The PR mentions they checked that the new version exists on the PSReadLine repo, so that's a solid point. The diff doesn't show any complex code changes, just version updates, which aligns with the description.
+
+However, there's a warning in the description about firewall blocks preventing access to PowerShellGallery. The user mentioned they couldn't connect due to firewall rules. This might be a red flag because if the build relies on fetching from that gallery, and the CI can't access it, the build might fail. But the metadata says Touches CI is False, so maybe the build process doesn't depend on external downloads? Or perhaps the modules are already cached or part of the repo. The PR mentions the CI will automatically download, but if the firewall blocks that, it could be an issue. However, since the metadata doesn't indicate touching CI, maybe the change doesn't affect it, so the firewall warning is just a local dev issue, not a PR problem.
+
+Another point is the changelog entry. The old entry for v4.3.0 had the same bullet point as the new unreleased section. That might be a duplication, but since it's a changelog, moving the entry to the unreleased section and removing from the previous version makes sense. The diff shows they removed the entry from v4.3.0 and added to the unreleased, which is correct for an upcoming release.
+
+The PR has a related issue, which is good because it shows alignment with existing work. The submission hour and day probably don't matter much here. The file entropy is low, indicating not too many files changed, which is good.
+
+Considering all this: the PR is a straightforward version bump with minimal changes, references an issue, passes basic checks, and the only potential issue is the firewall warning, but that might be a local setup problem. Since the metadata doesn't flag CI touches, and the description says CI will handle it, I think this is acceptable. The rejection probability should be low. Maybe around 0.1 to 0.2? But wait, the user mentioned firewall blocks when trying commands like installing modules. If the build process requires internet access to PowerShellGallery and the CI environment has similar firewall restrictions, that could cause failures. However, the metadata says ""Touches CI: False,"" implying the change doesn't affect CI, so perhaps the CI is already configured properly. The PR's own verification steps mention they validated the build script syntax, which might not require the actual download. So the firewall issue might not be a blocker for merging, just a note for the user's environment. Therefore, the PR looks good to accept.
+"
+3211995799,0,rejected,0.8319,1,"Alright, let's evaluate this PR step by step. 
+
+First, looking at the title and description: The title mentions improving the documentation structure for LLMs. The description is brief but mentions configuring a plugin to generate focused documentation files. The PR includes significant changes, especially the creation of new documentation files and configuration adjustments.
+
+Next, checking the metadata. The task type is ""docs"", which is a good sign since documentation changes are usually acceptable. The additions are 186 lines, deletions are 9751, which is a massive number. That's unusual for a documentation PR. Large deletions might indicate refactoring, but the description doesn't explain why so much was removed. The metadata also notes that it touches CI, which could be a concern if it breaks the build, but the user hasn't mentioned issues there.
+
+Looking at the diff, the main changes are adding a new documentation file and modifying the configuration. The new file seems to organize the documentation better, splitting into focused and comprehensive versions. However, the deletions are in the lockfile and might be due to dependency updates or structure changes. The diff shows some dependency versions changing, but without more context, it's hard to say if that's intentional or problematic.
+
+The PR's description is quite short, which might be a red flag. It lacks details on why such large deletions are necessary. The user included a code snippet showing the new configuration for generating LLM files, which looks well-structured. However, the massive deletions in the lockfile could indicate dependency updates that might not be properly tested. Since the PR mentions testing with `pnpm run build`, maybe it's okay, but without explicit test results, there's uncertainty.
+
+The metadata also mentions that touches tests is False, so there are no new tests added. For a PR that's reorganizing documentation and possibly dependencies, having tests would be reassuring. The lack of tests and the large deletions might contribute to a higher rejection probability.
+
+Considering the signals: The PR is a documentation change (lower risk), but the massive deletions without clear explanation, no tests, and potential dependency changes could be risky. The description is minimal, which might not clearly justify the changes. However, since the main changes are in documentation structure and configuration, and the deletions are in lockfiles (which might be automated), maybe it's acceptable. But the high deletion count is a point of concern. 
+
+The rejection signals here are the large deletions without explanation, lack of tests, and possibly dependency changes. However, since it's a documentation-focused PR with clear intent, and assuming the lockfile changes are correct, the probability might be moderate. But given the high deletions and unclear reasons, the probability leans towards rejection.
+
+Wait, the deletions are 9751 lines. That's over 9k lines removed. That's extremely large for a documentation PR. That's a huge red flag. Lockfile changes usually don't account for that many deletions unless there's a major dependency change. Maybe the PR is removing a lot of old documentation files? But the description doesn't mention that. The diff shows adding a new markdown file but the main deletions are in the lockfile and possibly other files not shown. Since the diff is truncated, we can't see all changes. Large changes without clear justification in the description are a strong rejection signal. The PR might be risky because such a massive change in documentation could break existing references or structures without proper explanation or tests. 
+
+So, putting it all together: The description is vague about the massive deletions, lacks tests, and the scale of changes is concerning. Therefore, the rejection probability is high.
+"
+3199884050,0,accepted,0.0215,0,"Okay, let me go through this PR step by step. The title mentions clarifying how to access certain commands via the right-click context menu in the Syntax Visualizer. The description explains that the documentation was inconsistent, leading to user confusion. The changes involve updating the documentation to consistently mention using the right-click menu for those commands.
+
+Looking at the metadata, the task type is ""docs"", which makes sense since it's a documentation change. The description is detailed and references an issue (#22669), which is good. The files changed are only one markdown file, and the diff shows specific edits where they replaced instances of ""Try [Command]"" with ""Right-click... and select [Command]"".
+
+The metadata also shows that the PR touches no tests or config, which is expected for docs. The file entropy is 0.0, indicating a single-file change, which aligns with the description. The agent used is Copilot, and the submission seems during normal hours.
+
+The diff text confirms that the changes are purely textual and about clarifying the steps. There's no code involved here, just documentation improvements. Since the user provided a clear before/after example and fixed an existing issue, this seems like a valid and necessary change.
+
+No red flags here. The description is clear, the changes are minimal but address a specific problem, and the metadata supports that this is a straightforward documentation fix. I don't see any reasons to reject this. The rejection probability should be low.
+"
+3192604530,1,rejected,0.6542,1,"Okay, let's evaluate this PR for rejection probability. First, looking at the title and description: the PR adds a ""fire"" tool example. The description mentions testing but notes that `yarn lint` fails with build-types errors. That's a red flag because linting failures can indicate code quality issues.
+
+Next, the metadata shows it's a TypeScript project with OpenAI_Codex as the agent. The task type is ""feat,"" which is appropriate for a new feature. The PR has 284 additions but no deletions, which is okay. However, related_issues is 0, which isn't necessarily bad, but the lack of test failures mentioned in the description (lint failing) is concerning. Also, the diff is truncated, but the provided part shows a new tool implementation.
+
+Looking at the diff, there's a lot of code added for the FireTool states. The code seems to be adding a custom tool with states like Idle, Pointing, Erasing. The example might be legitimate, but the linting error mentioned in the description is a problem. The PR's tests are listed as passing except for lint, which could mean the code isn't compliant with project standards.
+
+The metadata's File entropy is low (0.1859), indicating maybe a single file change, but since it's an example, that's okay. However, the linting failure suggests there might be formatting or type issues. Since linting is part of the CI/CD process, this could block merging. The absence of related issues might mean it's a standalone feature, but without tests passing, it's risky.
+
+Considering all factors: the linting failure, potential code quality issues, and the fact that it's an example (possibly not critical but still needs to meet standards), the rejection probability is higher. But since it's an example and maybe part of a tutorial, the maintainers might accept it despite lint issues if the functionality is correct. However, the presence of errors in linting usually leads to rejection until fixed. The rejection probability is around 0.65, so it's on the edge, but since the lint fails, I'll lean towards rejection.
+"
+3190464879,0,rejected,0.8871,1,"Alright, let's tackle this PR evaluation. The title says ""Update workflows to push to GitHub Packages,"" so the main goal here is moving image pushes from Docker Hub to GitHub Container Registry (GHCR). 
+
+First, looking at the description, the user mentions stopping Docker Hub pushes, using the repo owner for GHCR, and dynamic username in the mirror workflow. The testing section lists some commands with failures: npm install has warnings, ESLint error, and pytest with no tests. That's a red flag because if the tests aren't passing, there might be underlying issues.
+
+Now, checking the metadata: the task type is ""ci,"" which makes sense for workflow changes. The language is Vue, but the changes are in CI config files. The metadata shows related issues as 0, which might be okay if it's a standalone change. The file entropy is 1.85, indicating multiple files changed, but that's expected for workflow updates. Touches CI is true, which is correct here. The description isn't empty, so that's good.
+
+The diff shows removal of Docker Hub login steps and updates to tags to use GHCR. The user replaced hardcoded ""selfhostedpro"" with expressions like ${{ github.repository_owner }}, which is dynamic and better. But looking at the diff, there are some inconsistencies. For example, in the tags section, some lines have both old and new tags, like keeping GHCR but removing Docker Hub. Wait, actually in the diff, the Docker Hub tags are being removed, and only GHCR tags are kept. That's correct.
+
+However, the diff also shows some repeated blocks. For instance, in the first job, the Docker login step is removed, and the tags now use GHCR with the repo owner. But there's a line that says ""- selfhostedpro/yacht:devel"" and ""- ghcr.io/selfhostedpro/yacht:devel"". Wait, no, looking closer, the Docker Hub lines are being removed, and only GHCR lines remain. That's correct.
+
+Another thing to note is the mention of ""npm run lint"" failing with ""ESLint is not a constructor."" That could indicate a dependency issue or a misconfigured ESLint setup, which might mean the code isn't properly linted, leading to potential bugs. Also, pytest ran with no tests—maybe the test suite is incomplete, but if there are no tests, that's a problem for a CI/CD change, especially if it's critical infrastructure.
+
+The diff also shows some repeated job configurations. For example, in the ""mirror"" job, they're using dynamic username instead of a hardcoded one, which is good. But there are some typos like ""jjobs"" instead of ""jobs"" in one section, which might be a mistake in the diff truncation but could indicate actual code errors. Since diffs can be truncated, maybe the actual code has syntax errors. If the workflow files have syntax errors, the CI might fail to run.
+
+Also, looking at the testing commands, ""npm install"" has many warnings but completes. Warnings can sometimes be ignored, but if they're critical, they might lead to build issues. The ESLint error is more serious because it's a runtime error in the linter, which could mean the lint step is broken, and thus any linting changes might not be properly validated.
+
+Considering all this, the main issues are the failing tests (lint and potential syntax errors in workflows) and possible typos in the YAML files. Since the PR touches CI configurations, any syntax error would break the CI pipeline, making this risky. The presence of test failures in the description indicates that the changes might not be thoroughly tested. Even though the intent is good (moving to GHCR), the execution might have critical issues that could lead to broken workflows. Therefore, the rejection probability should be high.
+"
+3191789111,0,accepted,0.1923,0,"Okay, let's tackle this. The user provided a pull request for an x-swiper component implementing a new scrollTo method. I need to evaluate whether to accept or reject it based on the given criteria.
+
+First, looking at the title and description. The title is clear: ""feat: Implement scrollTo method for x-swiper component"". The description explains removing old methods, adding the new one, and includes testing details. The PR mentions backward compatibility and test coverage, which are good signals. The description is thorough and has a related issue (Fixes #1196), which is a positive point.
+
+Next, the metadata. The task type is 'feat', which fits the changes. The description isn't empty, and there's a related issue. The files changed are 15, which is a bit high, but since it's a feature addition, maybe that's okay. The diff touches tests, which is good. The file entropy is 1.7855, which isn't too high, so maybe the changes are focused enough.
+
+Now, the diff. The code removes the old scrollToNext and scrollToPrevious methods, adds the new scrollTo with overloads. The implementation reuses existing private methods, which is efficient. There's a test file added, and the test cases check different scenarios. The TypeScript overloads ensure type safety. The code seems well-structured, and the comments explain the parameters. The diff shows that the scrollTo method handles both custom and standard HTML cases, maintaining backward compatibility.
+
+Possible issues? The diff is truncated, so I can't see everything, but the visible parts look okay. The test coverage added is a plus. The PR mentions that existing functionality isn't impacted, which reduces risk. The fact that it fixes an issue (related_issues=1) is a good sign. The agent is Copilot, which is reputable, and the description is detailed, so the author put effort into explaining the changes.
+
+Rejection signals: The main concern might be the number of files changed (15), but since it's a feature addition, maybe that's necessary. The description length is sufficient, and there's no mention of experimental flags. The diff includes tests, so that's a positive. The task type matches, and there's no indication of vague descriptions or mismatch between title/diff.
+
+Therefore, the rejection probability should be low. The changes seem well thought out, tested, and necessary. The PR follows best practices with tests and documentation. I don't see strong rejection signals here. So I'll go with accepted.
+"
+3225993657,1,accepted,0.1984,0,"Okay, let's analyze this PR to determine if it should be rejected. First, looking at the title and description: the PR adds a test for an ""abort panic"" in the `abort` module. The description mentions running several commands like `moon info`, `moon fmt`, etc., which suggests some testing, but the testing section is brief. The metadata shows that the task type is ""test"", which aligns with the PR's intent.
+
+Now, checking the metadata flags. The ""Touches tests"" is True, which is good because it's a test addition. However, the ""Touches config"" is also True, meaning there's a change in configuration files. The diff shows a modification to a MoonBit config file adding a target entry, which might be okay if it's correctly setting up the test environment. The ""File entropy"" is low (0.41), indicating not too many files changed, which is manageable.
+
+Looking at the diff details: the main change is adding a new test file (`panic_test.mbt`) with a test case that calls `abort(""should panic"")`. That seems straightforward. The config change in the first diff adds a target entry for ""panic_test.mbt"" under ""targets"". That looks correct for including the new test in the build/test setup.
+
+Potential issues: The description mentions running `moon info`, `moon fmt`, etc., but does it confirm they passed? The PR's testing section just lists the commands without stating their success, which could be a minor flag. Also, the commit message and description reference a URL to a task on ""https://chatgpt.com/codex/tasks/..."", which might be a placeholder or typo (since ChatGPT isn't a task tracker). That could be an oversight, but maybe not critical.
+
+Another point: the new test's content is simple, but does it actually test that the panic occurs as intended? The test code shows `abort(""should panic"")`, but without seeing the framework's test runner, it's unclear if this setup properly checks for a panic. If the test is supposed to pass when an abort happens, but the framework treats that as a failure, the test might be incorrect. However, without more context, it's hard to say.
+
+The metadata has ""Related issues: 0"", so no linked issues. That's not necessarily bad, but sometimes tests are tied to specific bugs or features. The PR is a standalone test addition, which is okay.
+
+Considering all factors: the PR is focused on adding a test, which is a positive sign. The config change seems minor and correct. The main concerns are the possible typo in the URL and the lack of explicit confirmation that the tests pass. However, since the task type is ""test"" and the changes are straightforward, the rejection probability should be low. But since there's a mention of a URL that might not be valid and the test's correctness isn't fully clear, maybe there's some uncertainty. However, the user might have just included a placeholder URL. 
+
+Overall, the PR seems acceptable unless there's a critical flaw in the test setup. Since the diff shows proper test code and configuration, and the description is clear enough, I'll lean towards accepting it.
+"
+3221925890,0,accepted,0.1245,0,"Okay, let's tackle this PR evaluation step by step. First, I need to look at the title and description to understand what the PR is about. The title is ""Trim MCP server tool payloads to reduce token consumption,"" which suggests the main goal is to reduce the amount of data sent, thereby lowering token usage. The description goes into more detail, explaining that they're modifying Azure DevOps MCP server tools to return trimmed responses instead of full JSON payloads. This is supposed to help with token efficiency, especially for weaker LLMs. The problem section mentions that before this change, tools like `ado_resolve_comment` were returning way too much data, leading to high token consumption. The solution adds a `fullResponse` parameter that defaults to false, so by default, responses are trimmed. They also provided examples of token savings, which is good.
+
+Now, checking the metadata. The task type is ""feat,"" which means it's a feature addition. The repository has a decent number of stars and forks, so it's a somewhat active project. The description length is substantial, indicating thorough documentation. The PR touches 29 files, with a lot of additions and deletions, which might be concerning if it's too much, but since it's a feature addition, maybe it's okay. The metadata mentions that it touches tests and CI, which is positive because changes should have tests. The file entropy is 2.4, which might mean there are several files changed, but since it's a feature, that could be normal. The agent is Copilot, so it's an AI-generated PR. The related issues is 1, so they're addressing an existing issue, which is good. The submission hour and day probably aren't critical here.
+
+Looking at the diff text, the changes involve adding the `fullResponse` parameter to several functions and modifying the response generation. They're filtering out unnecessary fields like `_links`, deleted comments, and some author properties. The trimmed responses are simplified messages or filtered data. The tests seem to be updated as well, which is good. The diff shows that they're using helper functions like `trimComments` to handle the filtering, which is a good practice for maintainability.
+
+Now, considering the rejection signals:
+
+Text signals: The description is detailed and clear. The title matches the diff's scope. The implementation details explain the problem and solution well. There's no vague language or experimental mentions here. The PR description even includes examples and token savings, which is thorough. So the text signals are positive.
+
+Metadata signals: The PR has related issues (Fixes #36), which is good. The task type is appropriate. The file entropy is a bit high, but since it's a feature affecting multiple tools, maybe that's okay. The touches tests and CI are positive. The fullResponse parameter is optional, so backward compatibility is maintained. The addition count is high, but the changes seem necessary for the feature.
+
+Diff signals: The diff shows targeted changes to the tools mentioned in the description. They added parameters and refactored response handling. The trimming functions are properly encapsulated. There's no sign of duplication or config-only changes. The tests are updated with the new parameters. The diff isn't truncated here, so that's good. The token savings examples in the description are backed by code changes, so that's solid.
+
+Potential issues: The high number of additions/deletions could be a red flag, but given that it's a feature addition and the PR is well-documented, maybe it's justified. Also, ensuring that the trimming doesn't omit critical data for users who rely on the full response. But since the full response is an opt-in option, it maintains backward compatibility. The tests should cover both modes. The example code in the description shows how to use the new parameter, which is helpful.
+
+The PR seems well-structured, addresses a clear problem, includes tests and documentation, and maintains backward compatibility. The metadata doesn't show any red flags except maybe the file count, but that's part of the feature's scope. The diff looks clean and targeted. The only possible concern is the large number of changes, but since it's a feature and properly tested, it's probably acceptable. Therefore, the rejection probability should be low.
+"
+3189779251,0,accepted,0.0987,0,"Okay, let's analyze this PR to determine if it should be accepted or rejected.
+
+First, looking at the title and description: The title clearly states the problem (fixing syntax highlighting for `ON UPDATE CASCADE` in SQL.plist). The description is detailed, explaining the problem, the solution, changes made, and testing done. It references an issue (#16955), which is good. There's a warning about firewall issues, but that seems unrelated to the PR's content. The description is thorough and addresses the problem effectively.
+
+Next, the metadata: The task type is ""fix"", which aligns with the title. The changes are minimal (1 addition, 1 deletion), which is appropriate for a syntax fix. The PR touches only one file, which is expected. It has related issues (1), which is positive. The description length is adequate, and there's no indication of experimental or empty content. Tests are mentioned as passing, which is good.
+
+Now the diff: The change is a regex adjustment in the SQL syntax file. The before and after show a clear improvement, adding support for `UPDATE` alongside `DELETE`. The regex now uses `on\s+(delete|update)` which correctly captures both cases. The fix seems precise and addresses the described issue. No obvious bugs or unintended changes here.
+
+Rejection signals: The description isn't vague, the diff matches the title, and there's no experimental language. The metadata shows touches tests, which is good. The diff is small and focused. The PR fixes an existing problem with a clear solution. The only potential issue is the firewall warning, but that's more about the user's environment and not the PR's content.
+
+Acceptance criteria: The description clearly explains the change, the diff directly addresses the issue, and there's no experimental language. The test cases mentioned confirm it works. The regex fix is straightforward and aligns with the problem stated.
+
+No red flags detected. The PR seems well-prepared, with a clear problem, solution, and validation. The changes are minor but targeted. The related issue reference adds credibility. The metadata doesn't indicate any risks. Therefore, this should be accepted.
+"
+3207071991,0,accepted,0.1235,0,"Okay, let's start by looking at the provided input. The user has given a pull request (PR) for a code change, and I need to evaluate whether it should be accepted or rejected based on the guidelines.
+
+First, I'll check the title_and_description. The title is ""Make tool call example parameter optional,"" which seems clear. The description mentions adding an optional parameter to control including tool call examples. There's a note that this is auto-generated by Cursor, which might be an AI tool. The summary by cubic explains adding the parameter and its default behavior. The description is detailed but uses some technical terms. I don't see any vague or experimental language here, so that's a positive sign.
+
+Next, looking at the metadata. The task type is ""feat"" which is appropriate for a feature addition. The language is Python, and the repository has a high number of stars and forks, suggesting it's a significant project. The changes include 277 additions and 197 deletions across 9 files, which is a moderate change. The metadata flags Touches tests as True, which is good. The file entropy is 2.0186, indicating multiple files changed, but since it's a feature addition, that might be okay. The agent is Cursor, and it's not marked as experimental or empty description. The submission hour and day don't seem problematic.
+
+Now, the diff text shows the implementation details. The changes involve adding a new parameter to the Agent class, updating related classes like MessageManager, and modifying message initialization based on the parameter. The diff includes documentation and test files, which is good. The code changes look structured, with conditional logic to include or exclude example messages based on the parameter. The parameter has a default of True for backward compatibility, which aligns with the description. There's a detailed implementation summary and PR notes, indicating thoroughness.
+
+Considering rejection signals: The description is clear, the diff matches the title's scope, and there's no mention of experimental flags. The parameter addition seems well-contained. The tests are touched, which is a positive signal. The diff isn't excessively large, and the changes are focused on adding a new feature without breaking existing functionality. The documentation updates suggest the change is properly communicated to users.
+
+Possible issues: The diff shows a lot of changes (277 additions), but since it's a feature addition across multiple files (9), that might be necessary. The inclusion of test files and documentation helps. The parameter's default maintains backward compatibility, so no immediate rejection flags here. The metadata doesn't indicate any critical issues like missing tests or high file entropy being a problem for a feature addition.
+
+Overall, the PR seems well-structured, with clear intent, proper testing, and documentation. The changes are focused and the parameter addition is a reasonable feature. I don't see strong signals for rejection. The rejection probability should be low, leading to an acceptance prediction.
+"
+3200923634,0,accepted,0.1219,0,"Okay, let me try to work through this. The user provided a pull request for fixing a SPI bus lock issue in ChibiOS. The PR's title and description clearly explain the problem and solution. The metadata shows it's a fix task with related issues, which is good. The diff shows the necessary changes to release the bus in error paths.
+
+First, checking the title_and_description: The title is specific and mentions the fix. The description details the problem, solution, and affected paths. It references an issue (Fixes #25323), which is a positive sign. The agent is Copilot, and the task type is 'fix', which aligns with the description.
+
+Looking at the metadata: The language is C, which matches the diff. The task type is fix, related issues is 1, which is good. The description length is sufficient, and it's not empty. Touches tests is false, but the problem is a critical bug, so maybe tests weren't needed here, but the fix is straightforward. File entropy is low, indicating a single file change, which is manageable.
+
+The diff shows that in each error return path, they added spiReleaseBus calls where needed. The changes look targeted and address all early return points. The code seems correctly placed under the SPI_USE_MUTUAL_EXCLUSION condition. The diff might have some formatting issues with the #if directives, but the logic is there.
+
+Possible red flags: The PR has 3 commits, which might be okay if each is logical. The lack of test changes could be a minor concern, but given the nature of the bug (locking), maybe unit tests are already in place. The description explains the fix clearly, and the commit message references the issue, which is good practice.
+
+Considering all factors, the PR seems well-explained, targets the correct issue, and the code changes are precise. The metadata doesn't show any negative flags like experimental or empty description. The rejection probability should be low because it's a clear fix with proper documentation and necessary code adjustments.
+"
+3193344742,0,rejected,0.6532,1,"Okay, let's tackle this PR evaluation. The user provided a lot of information, so I need to go through each part carefully.
+
+First, looking at the title and description. The title mentions adding Windows Server Core and Nano Server 2025 .NET sample images. The description is detailed, listing changes like updating manifest files, Dockerfiles, test data, and documentation. They also mention backward compatibility and provide usage examples. The description is thorough, but there's a big warning about firewall blocks. The warning lists multiple blocked addresses during testing, which might indicate issues with the tests or network configurations.
+
+Next, the metadata. The language is Dockerfile, which makes sense given the changes. The agent is Copilot, and the task type is a feature addition. The repo has a decent number of stars and forks, so it's a well-known project. The additions and deletions are significant (4617 vs 3320), which could be a red flag. Files changed are 315, which is a lot. The description length is over 6k, which is very long but mostly due to the firewall warning section. The metadata flags Touches tests as true, which is good. The file entropy is high (5.32), indicating many files changed, which might complicate review.
+
+Looking at the diff text, the changes in Dockerfiles look like parameterizing tags, which is a good practice for flexibility. The manifest samples now include the new 2025 versions. However, the diff is truncated, so I can't see the full changes, but the provided parts seem okay. The firewall warning in the description suggests that during testing, the tests couldn't reach certain resources, possibly because the firewall is blocking them. This might mean the tests are failing, but the PR's author hasn't addressed those failures yet. The PR references an issue (#6514) which is a positive signal.
+
+Now considering the rejection criteria. The text has a warning about firewall issues, but the description isn't vague. The title matches the diff scope. The metadata shows touches tests and CI, which is good. The large number of changes and files might be a concern, but the PR is adding support for new versions, so that's expected. The high file entropy could lead to higher rejection probability, but since the changes are additive and backward compatible, maybe it's manageable.
+
+The main issue here is the firewall blocking tests. If the tests are failing because of network issues not related to the code, that's a problem. The PR mentions that existing tests are updated, but if they can't run properly, that's a risk. The author might need to fix the firewall settings or ensure tests don't rely on blocked resources. Since the PR includes test updates, but the tests might not be passing due to external factors, that could lead maintainers to reject until those are resolved.
+
+Also, the PR has a related issue (Fixes #6514), which is good, but if that issue is about the firewall problem, it might not be addressed here. The description's warning section is quite prominent, which might signal that the PR isn't ready yet because tests are blocked. However, the user might have just included that as part of their testing notes, not as part of the PR's problem.
+
+Considering all factors: the description is clear, the changes are additive and backward compatible, but the significant number of files and the test failures due to firewall issues might raise concerns. The high file entropy and large diff size could lead to a higher rejection probability. However, since the PR is a feature addition and seems well-intentioned, but with potential test issues, maybe the rejection probability is moderate. But since tests are a key part, if they can't run, that's a problem. The presence of a related issue and the detailed description might offset that. Hmm.
+
+Wait, the metadata says ""Touches tests: True"" which is good, but the firewall warning indicates tests are failing. The author might have not resolved those, so maintainers might ask for fixing the tests first. Since the PR includes test updates (TestData.cs changes), but the tests can't run because of blocked addresses, that's a blocker. Therefore, the PR might be rejected until those tests pass or the firewall issues are addressed. The large number of files and lines might also make it harder to review, increasing the chance of rejection unless it's clearly well-tested.
+
+Putting it all together, the rejection probability might be around 0.6 to 0.7. But looking at the example responses, sometimes even with test issues, if the PR is well-structured, it might be lower. However, the firewall warnings indicate potential test failures, which are critical. So maybe 0.65?
+"
+3195544033,0,accepted,0.2105,0,"Alright, let's tackle this PR evaluation. The title is ""Move locale pack from private/ to @uppy/locales"". The description is brief, just stating the move and isolating the build logic. First, I need to check for any red flags in the text, metadata, and diff.
+
+Starting with the text: The title and description are straightforward. No vague or experimental language here. The description explains the change clearly, which is good. However, it's pretty short. The testing section mentions changes to build scripts, but there's no explicit mention of tests being added or modified, though the metadata says ""Touches tests: False"". That might be a minor concern.
+
+Looking at the metadata: The task type is refactor, which is acceptable. The PR has 11 files changed, which isn't too large. The file entropy is moderate, indicating some complexity. Not touching tests might be okay for a refactor if existing tests cover the changes, but since it's moving code, maybe some tests were adjusted? The metadata says ""Touches tests: False"", so maybe they weren't. Also, the description isn't very long, but it's not empty. Related issues is 0, but since it's a refactor, that might be okay. The submission hour is during the workday, which is normal.
+
+Now the diff: The changes are moving the locale-pack from a private directory to a new package. The build scripts are updated to reference the new location. The package.json for the new @uppy/locales includes new dependencies like chalk and glob, which were previously in the private package. The actual locale data (like the en_US strings) is truncated in the diff, but the structure seems to be moved correctly. The removal of the private package's package.json shows that the old structure is being cleaned up. 
+
+Potential issues: Since it's a refactor moving code, there's a risk of breaking existing functionality. The diff shows changes in build and test scripts, but the metadata says tests weren't touched. The user might have missed updating tests, which could be a problem. However, the build scripts now point to the new location, so existing tests might still run. The addition of dependencies in the new package looks correct. The diff is mostly structural, which is expected for a refactor.
+
+Considering all factors: The description is clear, the change is focused on reorganizing code without adding new features. The metadata doesn't show major red flags except for not touching tests, but if the existing tests still run and pass, that's okay. The diff shows a clean move without obvious errors. Since it's a refactor and the changes are structural, the probability of rejection might be low unless there's an oversight in testing. However, the lack of explicit test updates might raise a flag. But given the metadata says tests are touched as false, maybe they weren't needed here. The file entropy and number of files changed are moderate, so I think this is a solid refactor. 
+
+Final call: The rejection probability should be low. I'll go with accepted.
+"
+3195477892,0,rejected,0.7893,1,"Okay, let's tackle this PR evaluation. First, I need to go through the title_and_description, metadata, and diff_text to identify any red flags or positive signals.
+
+Starting with the title_and_description: The title is ""chore(web): add browser timezone and locale utils"". The description mentions cleaning up the sign-in form to stop sending a timezone header, removing a timezone hook from the server config, deleting an unused helper, and sending the timezone as a query parameter during sign-in. The testing commands are bun format and lint. The PR also includes a link to some task on chatgpt.com, which might be a typo or a placeholder. The task type is 'chore', which usually means maintenance, so that's okay.
+
+Looking at the metadata: The language is TypeScript, MIT license. The agent is OpenAI_Codex. The task is chore. The repo has 1k stars, 137 forks. The changes are 1725 additions and 1655 deletions across 11 files, 5 commits. Related issues: 0. The description length is okay. It touches tests and config, which is fine. File entropy is 1.9398, which is moderate. Not experimental or empty description. Submitted at 10 AM on Wednesday.
+
+Now the diff. The diff shows changes in components like the sign-in form, removing the timezone header, adding a query parameter with getBrowserTimezone. There's a migration file adding a 'time_zone' column to the user table with a default of UTC. The rest of the diff is a large SQL schema dump which is probably truncated. The SQL changes are part of the migration, which is okay if it's necessary. But the diff is truncated, so maybe there's more there. Also, there's a file with just two lines of SQL, which might be a migration script.
+
+Potential issues: The PR has a lot of changes (nearly 3k lines net). The SQL schema diff is big and truncated, which might mean there's more going on than just adding a timezone column. Also, the migration adds a NOT NULL column with default 'UTC'—that's okay, but if it's part of a larger schema change, maybe it's better to have an issue or more context. The description doesn't mention the database changes, which is a problem because adding a column to the user table is a significant change not covered in the summary. The user might not have realized that the migration is part of this chore, which could be a mismatch between the title/description and the actual changes. Also, the PR includes a link to a task on chatgpt.com, which might be a placeholder or unrelated, but it's odd to have such a link in a PR description.
+
+The metadata has touches_config: True, which is okay for a chore, but the big schema change might be a config or data model change that's not mentioned. Since the task is 'chore', maybe it's a cleanup, but adding a column to the user table is more of a feature or schema change, which might not fit under 'chore'. Also, the related issues being zero could be an issue if this change is part of a larger effort that should be tracked in an issue.
+
+The diff shows that the timezone is now sent via query parameter instead of a header. That's a change in how data is sent, which might have security implications or require documentation. The removal of the timezone hook from the server might mean the backend no longer expects that header, so the frontend change is paired with a backend removal, which is good, but if the backend changes are not included here, that could be a problem. But the diff includes server-side changes like the migration, so maybe it's all here.
+
+The rejection signals here are: the PR's description doesn't mention the database schema changes (adding a column to the user table), which is a significant part of the diff. There's a mismatch between the title/description (which talks about client-side changes) and the actual changes which include a database migration. Also, the large diff size and truncation might indicate that there's more going on than the description says. The presence of a link to an external task might be a red flag if it's not a real reference. The high number of files changed and lines modified could be concerning if it's part of a chore that's supposed to be minor. Also, the addition of a NOT NULL column in the database might require data migration, which isn't mentioned in testing steps.
+
+On the positive side, the tests are run, and it's a chore task which might be acceptable for cleanup. But the mismatch between description and actual changes (like the schema) is a big issue. The lack of related issues might mean it's not tracked, which could be a problem for future maintenance.
+
+So putting this together, the main issues are the significant schema change not mentioned in the description, possible mismatch between title and actual changes, and the large diff which might hide other issues. The probability of rejection would be high because the PR's description doesn't align with the actual code changes (adding a database column is a big deal not covered in the summary), and there's a lack of context around the migration. The testing commands don't mention testing the database changes either, which is a concern.
+"
+3225256791,1,accepted,0.4271,0,"Alright, let's tackle this PR evaluation. The title mentions translating Japanese comments to English in types.pyi, but the description and diffs show a much broader scope. The user provided a detailed description with a summary, testing steps, and even a mermaid diagram. The metadata indicates 61 files changed, which is a lot for a documentation-focused task. The diff shows changes in various files, including some configuration and documentation files, not just comments.
+
+First, looking at the text signals: The description is thorough, explaining the purpose and the scope. It mentions translating comments and TODOs to improve maintainability. The title is specific to types.pyi, but the actual changes span many files. That's a mismatch between the title and the diff scope, which is a red flag. The PR also mentions removing some comments entirely, which might be okay, but the large number of files changed raises questions.
+
+Next, metadata signals: The task type is 'docs', which aligns with translation of comments. The high number of files changed (61) and the entropy (3.55) suggest significant changes across many files. The description is long (3065 characters), which is good for clarity, but the large file changes might be an issue. The PR touches tests and CI, which is acceptable for documentation changes if they're just comment updates, but need to ensure no functional changes.
+
+Diff analysis: The diff shows changes in .pyi files, Python scripts, and documentation files. The user claims no functional changes, only comment translations. However, looking at the diffs, there are changes in build scripts (like batch files) and configuration files (gitattributes, etc.), which might be risky. For example, modifying build scripts could introduce unintended issues. The diff also shows changes in NOTICE.txt and other documentation files, which are okay, but the scale is concerning.
+
+The user provided a testing checklist, which is a positive signal. They mention running tests and verifying functionality, which is good. However, the PR's scope being 61 files with both code and config changes increases the risk. The high file entropy suggests changes across many different files, which might indicate scattered changes that could be overlooked.
+
+Another point: The PR includes changes to files like .gitattributes and build scripts, which are critical for the project's infrastructure. Any mistake here could break the build or CI/CD pipelines. The user's description mentions translating comments, but these files might have functional configurations, so changing them without a clear reason is risky.
+
+The metadata shows related_issues:0, which is neutral. The touches_tests is True, but since it's a docs task, maybe tests are passing. However, the large number of deletions and additions (777 vs 704) might indicate reformatting beyond just comments, which could be problematic.
+
+The agent is Devin, which might have a history, but assuming it's trustworthy. The description includes a mermaid diagram, which is detailed but might be overkill for a docs PR. The presence of a review checklist is good, but the PR's scope might be too broad for a single commit.
+
+Considering all this, the main issues are the title vs diff mismatch, the extensive file changes beyond just comments, and the modifications to critical config files. While the intent is good, the high risk from touching many files and build scripts might lead to rejection unless thoroughly tested. However, the user provided a test plan and the changes are documentation-focused, which might mitigate some risks. The rejection probability is moderate but leans towards rejection due to the scope and potential for unintended changes.
+"
+3224080802,0,rejected,0.9213,1,"Okay, let's take a look at this PR for the DockReactiveUIRoutingSample. The title mentions adding a ReactiveUI routing sample, which sounds like a feature addition. The description says they added a new support library and a sample project, and registered it in the solution. The testing notes mention some failures, like build errors and test failures. 
+
+First, the metadata shows the task type is ""feat"", which is appropriate for a new feature. The language is C#, and the repo has a decent number of stars and forks, so it's an active project. The additions are over 1000 lines, which is a lot for a single PR, but since it's adding a new sample and a library, maybe that's okay. 
+
+Looking at the diff, there's a new project added to the solution file, which makes sense. The diff also includes several new files like the App.xaml, Program.cs, and ViewLocator classes. The errors mentioned in the testing section are concerning. The user tried running tests and building but got failures. For example, ""The argument ... is invalid"" and a build error about converting a lambda expression. These errors might indicate that the code doesn't actually build or pass tests, which is a red flag.
+
+The description mentions that the tests failed, which is a problem because the PR might not be functional. The diff includes a lot of new code, but without passing tests, it's risky to merge. Also, the sample project's build failure suggests there are unresolved issues in the code. 
+
+Additionally, the metadata shows that ""Touches tests"" is true, but the test results are failing. The high number of files changed (41) and the complexity of adding a new sample with routing might have introduced bugs. The high file entropy (3.8876) indicates a lot of changes across different files, which could mean the PR is too broad or not well-scoped. 
+
+The rejection signals here include failing tests, build errors, and possibly incomplete implementation. The description doesn't mention fixing these errors, so there's a chance the PR isn't ready. Since the tests and build are failing, the maintainers would likely reject this until those issues are resolved. 
+
+Considering all that, the rejection probability is high. The PR has several issues that need addressing before it can be accepted.
+"
+3224106600,0,accepted,0.1246,0,"Okay, let me start by looking at the provided PR details. The title is ""Add SSE Response parser tests,"" which sounds like a test-related change. The description mentions adding a `tokio-test` dev dependency and implementing response stream parsing unit tests. The metadata shows it's for Rust, with a high number of stars and forks, which might indicate it's a significant project. The task type is ""test,"" which is a good sign for acceptance since test additions are usually welcomed.
+
+Looking at the diff, there are several new test functions added, like `parses_items_and_completed` and `error_when_missing_completed`. These seem to cover different scenarios, which is positive. The use of `tokio-test` and `async-stream` in the dependencies suggests proper setup for async testing, which is good practice in Rust.
+
+The metadata includes `Touches tests: True`, which is a strong acceptance signal. The additions are 1122 lines, which is quite a lot, but since it's test code, that might be okay. However, the high file entropy (2.3775) might indicate many files changed, which could be a concern for complexity or scope. But since it's adding tests, maybe that's acceptable.
+
+The description also includes testing commands like `cargo test`, which shows the author tested it. The `Related issues: 0` is neutral here since tests don't always need an associated issue. The `Submission hour` and day don't seem problematic.
+
+Possible red flags: The diff includes adding multiple dependencies like `async-stream` and `tokio-test`, but since they're dev dependencies, that's okay. The large number of files changed (26) might be a bit high, but again, adding tests could require changes in multiple places. The `File entropy` is high, but maybe it's just a lot of test files.
+
+No mention of experimental or vague language in the title/description. The task type is correct for the change. The diff shows tests being added properly with async functions and error handling. I don't see any obvious issues like config-only changes or lack of tests. Since the PR is focused on tests and includes proper setup, it's likely to be accepted. The rejection probability should be low, so the prediction is accepted.
+"
+3199906831,0,accepted,0.0873,0,"Okay, let's tackle this. The user provided a PR for enhancing the semantic versioning documentation in a C# guide. The main goal is to make it clearer for beginners. Let me go through the input step by step.
+
+First, the title is clear: ""Add concrete examples to semantic versioning documentation for beginners"". That's specific and matches the content. The description explains the problem: the existing docs were too abstract, and a beginner had trouble understanding MAJOR, MINOR, and PATCH increments. The solution adds examples for each, with code snippets. The key principle added simplifies the decision-making process.
+
+Looking at the metadata: the task type is ""docs"", which is appropriate. The description length is 2290, which is thorough. Related issues are mentioned (Fixes #23343), so that's good. The changes are in a single file, which is expected for documentation. The diff shows substantial additions of examples and reorganization, which seems helpful.
+
+Now, checking for rejection signals. The title and description align well. The examples provided are clear and address the stated problem. The diff includes structured examples with code, which is exactly what the description promised. The key principle is a helpful summary. There's no mention of experimental language or vague descriptions. The metadata shows touches tests: False, but since it's documentation, that's okay. The PR is related to an issue, which is a plus.
+
+Possible concerns: The diff might have some formatting issues, but since it's documentation, that's minor. The submission is from Copilot, but the content looks legitimate. The rejection probability should be low because the PR clearly improves the docs with concrete examples, addresses an existing issue, and follows best practices for documentation changes. The prediction should be accepted.
+"
+3194873632,1,accepted,0.1234,0,"Alright, let's tackle this PR evaluation. First, I'll go through the provided information step by step to understand the context and the changes made. 
+
+Starting with the title and description: The PR is titled ""Add thunderfx report functions to dynamo documentation"" and the description explains that two functions were added to the documentation as requested in an issue (#2115). The changes include updating the documentation files and the Python module's `__init__.py` to include these functions in the exports. The user mentions that they followed existing patterns, maintained backward compatibility, and validated that the functions are accessible and have proper docstrings. There's also a warning about firewall issues blocking access to an S3 bucket during documentation builds, but the user notes that the changes are minimal and only involve two files with 11 lines modified.
+
+Next, looking at the metadata: The language is Python, and the repository uses Apache-2.0 license. The agent is Copilot, and the task type is a feature addition. The repository has moderate stars and forks, indicating it's active but not extremely large. The PR has 11 additions and 1 deletion across two files. It's linked to one related issue, which is good because it addresses a specific request. The description is lengthy, which is positive for clarity. It doesn't touch CI or tests, which might be a minor concern, but since it's documentation, maybe tests aren't necessary here. The file entropy is low (0.45), suggesting minimal file changes, which aligns with the description.
+
+Now, the diff text shows that the documentation's `index.rst` file added two new functions to the autosummary list. The `__init__.py` file imported the new functions and added them to `__all__`, which is correct for exposing them in the API. The changes look straightforward and follow the existing structure.
+
+Looking for rejection signals:
+
+1. **Text Signals**: The description is detailed and explains the changes well. There's no vague or experimental language. The title matches the diff scope since the changes are about adding documentation entries for the functions mentioned. The user also references an issue, which is good.
+
+2. **Metadata Signals**: The PR touches documentation and the module's exports. Since it's a documentation update and adding public functions, the lack of tests might not be an issue here. The related issue exists, which is positive. The file entropy is low, so no multi-file complexity issues. The submission hour and day don't seem problematic.
+
+3. **Diff Signals**: The diff is small and focused. The changes in `__init__.py` are standard for exposing functions. The documentation additions are straightforward. The only potential issue is the firewall warning mentioned in the description, but that's about the user's environment and not the PR's code. Since the user states that validation was done and functions are accessible, it's likely not a problem with the PR itself.
+
+Possible concerns: Since the PR adds functions to the public API (`__all__`), it's crucial that these functions are stable and properly documented. The user mentions the functions have comprehensive docstrings, which is good. The fact that it fixes an issue (#2115) suggests it's a needed change. The minor deletion in the `__init__.py` might need checking, but the diff shows it's just formatting the `__all__` list to be multiline, which is standard.
+
+The firewall warning in the description is a note from the assistant about its environment, not an issue with the PR. The user addressed it by noting that the changes are minimal and don't require those blocked resources. So that shouldn't affect the PR's acceptance.
+
+Considering all factors, this PR seems well-documented, addresses a specific issue, and makes minimal, appropriate changes. There's no strong signal pointing towards rejection. The only minor point is the lack of tests, but since it's documentation and API exposure, tests might not be required here. Therefore, the rejection probability should be low.
+"
+3194800623,0,rejected,0.9201,1,"Okay, let's tackle this PR evaluation step by step. First, I need to look at all the provided information and check for any red flags based on the guidelines.
+
+Starting with the **title_and_description** section. The title is ""Refactor benchmark into strategy pattern,"" which sounds like a code structure improvement. However, the description is completely empty. That's a problem because an empty description (Empty_description=True in metadata) is a strong rejection signal. The user didn't explain what the refactor entails beyond the title, which might indicate a lack of clarity or possibly an experimental change.
+
+Next, the **metadata**. The key points here are:
+- **Empty_description: True**: This is a major issue. The description being empty means there's no explanation of the changes, making it hard for reviewers to understand the intent or verify correctness.
+- **Task type: refactor**: Refactors can be acceptable, but without a clear description, it's risky.
+- **Files changed: 1**: A single file change isn't inherently bad, but combined with other factors, it might not be enough.
+- **Related issues: 0**: No linked issues, which is okay but doesn't provide context.
+- **Touches tests: False**: The PR doesn't include tests, which is a concern, especially for a refactor that might have hidden bugs.
+- **File entropy: 0.0**: Indicates a single-file change, which is lower risk, but other factors override this.
+
+Looking at the **diff_text**, the PR introduces a strategy pattern by creating a `BenchmarkStrategy` protocol and a `ThroughputStrategy` class. The refactoring moves logic into these classes, restructuring how enqueuers and dequeuers are managed. The diff shows significant changes (131 additions, 71 deletions), which is substantial for a single file. However, since there's no test coverage mentioned and the description is empty, it's hard to verify if this refactor maintains or improves functionality without introducing regressions.
+
+Rejection signals here include:
+1. **Empty Description**: The lack of explanation makes it hard to assess the PR's validity.
+2. **No Tests**: The metadata says Touches_tests: False, so there's no new test added, and existing tests might not cover the changes adequately.
+3. **Potential Complexity**: Introducing a new pattern like the strategy might add complexity without clear benefits explained in the description.
+4. **Unclear Necessity**: Without a description, the motivation for the refactor isn't obvious. Is this improving maintainability, fixing a bug, or optimizing performance? The title hints at a refactor for patterns but doesn't specify why it's needed.
+
+On the positive side:
+- The refactor is focused on a single file (low file entropy).
+- The task type is refactor, which is acceptable if done well.
+
+However, the combination of an empty description and no tests tips the scales towards rejection. Reviewers can't easily verify the changes' correctness or purpose without more information. Additionally, the lack of tests for a structural change increases the risk of introducing bugs that might not be caught immediately.
+
+The metadata doesn't flag Is_experimental, which is good, but the absence of a description is a critical flaw. The diff shows significant changes, but without context, it's hard to trust the refactor's benefits outweigh its risks.
+
+In conclusion, the main issues are the empty description and lack of tests. These outweigh the positive aspects, leading to a high rejection probability.
+"
+3220097416,0,accepted,0.0987,0,"Alright, let me analyze this PR step by step. First, looking at the title and description, the main goal is adding ""Open Extension"" buttons to individual extension items in the ""Manage Language Model Access"" view. The description explains that previously only separators had these buttons, and now they're adding them to each item. That makes sense for usability.
+
+The description is detailed, mentioning implementation details like the file changed, lines added, and how the buttons work. It also includes a visual example and testing steps, which is good. The only warning here is about firewall issues, but since the user mentioned they fixed it by adding the necessary steps, it might not be a problem anymore.
+
+Now, checking the metadata: the task type is 'feat', which aligns with adding a new feature. The related issues count is 1, which is positive because it references an existing issue (#253232), showing it addresses a specific request. The description length is sufficient, and there are tests mentioned, which is good. The file entropy is low (0.56), meaning it's a focused change on a single file, which reduces risk.
+
+Looking at the diff, the changes are in TypeScript. They added buttons to each item and handled the click events. The code looks straightforward—adding buttons with an icon and tooltip, then the event handler to open the extension. There's a minor change from using '!' for non-null assertion to checking if extId exists, which is safer. The diff doesn't show any obvious bugs, and the additions are minimal but targeted.
+
+Potential issues? The PR fixes an issue, has tests, and the code seems clean. The metadata flags like 'Touches tests: True' are positive. The agent is Copilot, which is trusted here. The submission hour and day don't seem problematic. The only possible concern is the firewall warning mentioned in the description, but since the user provided workarounds, it's likely resolved.
+
+Considering all factors: clear description, references an issue, code changes are small and relevant, tests included, and metadata signals are positive. No red flags like experimental flags or missing descriptions. Therefore, the probability of rejection should be low.
+"
+3220364342,0,rejected,0.7893,1,"Okay, let me try to figure out why this PR might be rejected. The title says they're removing the junderw-crc32c dependency. The description is pretty short, just mentioning that it's generated by Cursor. The metadata shows that there are no related issues, and the PR touches config files but no tests. The diff shows that they removed the dependency from package.json and some other config files, and also removed the associated nodes in the lockfile.
+
+Hmm, first thing I notice is that the description is very minimal. It doesn't explain why they're removing the dependency. Maybe it's redundant or causing issues, but without an explanation, reviewers might not know the reasoning. The task type is ""build,"" which suggests it's related to build configuration, but without more context, it's hard to tell.
+
+Looking at the metadata, Touches tests is False, so there are no tests added or modified. That could be a problem if the removal breaks something. Also, the File entropy is low (0.1358), which means it's a small change, but maybe that's okay here. The PR has two commits, but no related issues linked, so maybe there's no prior discussion or bug it's addressing.
+
+The diff shows that removing the dependency also removes some other modules like exit-on-epipe and printj. Maybe those were dependencies of junderw-crc32c. But without knowing if those are still needed elsewhere, this could introduce breakages. For example, if another part of the code uses those modules, removing them might cause errors. The PR doesn't mention checking for that.
+
+Also, the PR's description is auto-generated without any user input, which might make maintainers wary. They might want a more detailed explanation of why this dependency is being removed and what steps were taken to ensure it doesn't break the project.
+
+Another point is the task type is ""build,"" but if the dependency was part of the build process, removing it without explanation could be risky. Maybe the dependency was no longer needed, but without justification, it's hard to assess.
+
+So, putting it all together: the PR lacks a clear explanation, no tests were touched, and there's potential for removing other dependencies that might be needed. The minimal description and lack of related issues could lead to rejection because maintainers can't verify the safety or necessity of the change.
+"
+3211948604,0,accepted,0.1487,0,"Alright, let's break down the evaluation for this pull request. The title mentions supporting GitHub PR URLs in the ""Checkout Pull Request by Number"" command, which sounds like a useful enhancement. The description details the changes, including enhanced input validation, updated prompts, and added test cases. The metadata shows that the PR has related issues (Fixes #7024) and touches tests, which is a good sign.
+
+Looking at the diff, the code changes involve modifying the input validation to handle both numbers and URLs. They use existing utilities like `parseIssueExpressionOutput` and `ISSUE_OR_URL_EXPRESSION`, which suggests reusing existing infrastructure. The test cases added for URL parsing are positive, indicating thorough testing.
+
+However, the diff shows a large number of additions and deletions (3151 additions, 3107 deletions), which might be concerning. But given that the files changed include tests and command files, maybe it's refactoring. The description mentions backward compatibility, so that's reassuring.
+
+The metadata also indicates that the description is detailed and not empty, and the task type is 'feat', which aligns with the changes. The agent used is Copilot, which is trusted. The rejection signals here are minimal. The main concerns might be the high number of changes, but since the test coverage is addressed and the PR fixes an issue, it's likely acceptable. The rejection probability should be low.
+"
+3210844014,1,rejected,0.9123,1,"Okay, let's start analyzing this PR to determine its rejection probability. The title mentions it's a work in progress (WIP) and uses Copilot to generate an SDK based on a specific Azure API specs PR. The description details the plan and current status, indicating they're still resolving network timeouts and dependency issues. 
+
+First, looking at the text signals: The PR is marked as WIP, which often signals it's not ready for review. The description mentions unresolved issues like network timeouts and pending steps, which are red flags. The presence of a TODO list with unchecked items suggests the work isn't complete. The title's inclusion of ""[WIP]"" is a strong indicator, and the description's focus on ongoing problems rather than a completed solution supports a higher rejection probability.
+
+Next, metadata: The task type is 'feat', which is appropriate, but the PR has related issues (Fixes #41928) which is good. However, the 'Has plan' is true, which might be positive, but the 'Touches tests' is false. Since generating an SDK usually requires tests, not touching them might be a problem. The file entropy is low, indicating fewer files changed, but the additions are minimal (11 lines), which could mean the PR isn't substantial yet. The submission hour is early (2 AM), which might not be an issue, but the WIP status is more critical.
+
+Diff analysis shows small changes in configuration files. The diff text is truncated, but the main issue is the WIP status and unresolved network timeouts. The PR hasn't generated the SDK yet, so the diff might not show the actual code. Since the PR is still in progress and has unresolved blockers, it's likely to be rejected until those are addressed.
+
+Considering all factors, the WIP status and unresolved issues are strong indicators. The PR isn't ready for merging yet, so the rejection probability is high.
+"
+3197430608,0,accepted,0.1245,0,"Okay, let me go through this PR step by step. The title says ""Fix tests warnings and update docs,"" which sounds like it's addressing some existing issues. The description mentions removing pytest warnings by registering the 'examples' mark, updating deprecated Field usage, docs, and bumping a dependency. The metadata shows it's a fix task with touches to tests and config, which is good.
+
+Looking at the diff, there are changes in the code where they replaced `Field(mutable=True)` with `Field(json_schema_extra={""mutable"": True})`. That aligns with the description about updating deprecated syntax. The docs and examples also have corresponding changes, which is good for clarity. The multidict version bump is probably to avoid a yanked version, which is a valid maintenance task.
+
+The metadata flags Touches tests as True, which is positive since they're addressing warnings. The submission hour is late (23), but that's not a big issue. The File entropy is 1.67, which isn't too high, so the changes are spread across files but not excessively. The description is clear and the changes seem targeted. No related issues, but the task type is fix, which fits. Since they fixed deprecations and tests, and updated docs, this looks like a solid PR. I don't see any red flags like vague descriptions or mismatched diffs. So I think this should be accepted.
+"
+3189765757,0,accepted,0.1042,0,"Okay, let's tackle this pull request evaluation. The PR is titled ""Fix TraceEvent.props to respect ProcessorArchitecture when RuntimeIdentifier isn't specified."" The user has provided all the necessary information, so I need to go through each section carefully.
+
+First, looking at the title and description. The description explains that the issue was the TraceEvent.props not including Windows-specific binaries when ProcessorArchitecture was set but RuntimeIdentifier wasn't. The fix changes the condition logic in the XML file so that when RuntimeIdentifier is empty, it still includes the correct binaries if the architecture is specified. The testing section lists various scenarios that were verified, which is good. The PR also references an issue (Fixes #2248), which is a positive sign because it connects the change to an existing problem. The description is detailed and clear, so that's a good point.
+
+Next, the metadata. The language is C#, which is relevant here. The task type is ""fix,"" which matches the title. The repository has a decent number of stars and forks, indicating it's a well-known project, so the PR needs to be solid. The additions and deletions are moderate (28 additions, 21 deletions), which isn't too large. The files changed are 2, focusing on the props file and possibly a test file. The PR has related issues (1), which is good because it shows there's an existing issue this is addressing. The description length is sufficient, and there's testing mentioned, so that's another positive. The metadata flags like Touches tests: True are good because testing is involved. The file entropy is 1.35, which isn't too high, so the change is focused. No experimental or empty description flags, so that's good.
+
+Looking at the diff, the changes are all in the TraceEvent.props file and possibly another file. The main change is modifying the condition logic in the XML to handle cases where RuntimeIdentifier isn't specified but ProcessorArchitecture is. The diff shows the conditions being adjusted from requiring RuntimeIdentifier to be non-empty and starting with 'win-' to allowing it to be empty or starting with 'win-'. This aligns with the problem description. The diff seems well-targeted, and the comments in the XML have been updated to clarify the conditions. There are no obvious errors in the diff, like incorrect syntax or unrelated changes. The test cases mentioned in the description should cover the scenarios, so the diff seems to implement the solution correctly.
+
+Now, considering the rejection signals. The description is clear and detailed, so no issues there. The title matches the diff's scope since it's about adjusting the props file conditions. The metadata shows that tests were touched, which is good. The diff is focused on the problem, and the changes are in the right files. The PR references an issue, so there's context. The addition of comments in the XML is a good practice, improving maintainability. The PR doesn't have a high number of changes, so the risk is lower. The agent used is Copilot, which is a known tool, so that's not a red flag. The PR has a low entropy, meaning it's focused, which is better.
+
+Possible negatives: The diff shows a lot of repetitive changes across different architectures (x86, amd64, arm64), but since each architecture's condition is being adjusted similarly, that's expected and not a problem. The PR has 5 commits, which might indicate some back-and-forth, but since it's a fix, that's acceptable. The fact that it fixes a specific issue and the test cases are listed as verified suggests it's well-tested.
+
+Considering all factors, the description is solid, the metadata shows proper testing and references an issue, and the diff is targeted and correct. There's no indication of experimental language or vague descriptions. The changes address the problem directly. Therefore, the rejection probability should be low. The prediction would be accepted.
+"
+3202227602,1,rejected,0.7214,1,"Okay, let me try to figure this out. The user provided a pull request to review for potential rejection. The title is ""[python][servicebus] Update readme.python.md to convert to singleapi package"". The description mentions moving to another PR (https://github.com/Azure/azure-rest-api-specs/pull/35902), which might indicate that this PR is a duplicate or part of a larger change. 
+
+Looking at the metadata, the task type is ""docs"", which usually means it's a documentation change. The additions are only 7 lines, deletions 41, so it's a significant reduction. The files changed is just 1, which is the readme.python.md. The metadata also shows that it doesn't touch tests or CI, and the description is short. The user might have missed some details here.
+
+The diff shows that they removed a lot of the multi-api configuration and replaced it with a single API setup. The main change is moving from track2 to the new single API approach. However, the description says ""moved to another PR"", which could mean this PR might be redundant or not complete. Maybe the actual code changes are in the linked PR, and this one is just a documentation update that's part of that larger change. But since the task type is docs, perhaps it's okay.
+
+But wait, the PR description is brief and references another PR. Maybe this PR is incomplete or was meant to be closed in favor of the other. The diff truncation might be an issue, but since the user says ""diff_text"" is truncated, maybe there's more. However, the main concern here is that the description is vague. The user mentions converting to singleapi but the linked PR might have the real changes, making this PR possibly redundant. Also, the metadata has ""Related issues: 0"", which is a signal. If there's no related issue and the description is brief, reviewers might question the necessity.
+
+Additionally, the diff shows that the configuration is being simplified, but without more context, it's hard to tell if this is correct. Since the task is a docs change but the diff is actually modifying configuration settings for the Python SDK generation, maybe the task type should be 'feat' or 'refactor' instead of 'docs'. That's a metadata inconsistency. The title mentions docs but the changes are code-related. That's a mismatch between title/description and the actual diff content. 
+
+So, the main rejection signals here would be the mismatch between the title (docs) and the actual code changes, the vague description pointing to another PR without explanation, and possibly being redundant if the other PR covers this. Also, the description length is short, and there's no clear explanation of why these changes are needed beyond converting to singleapi. Since the user's own rejection criteria include title not matching diff scope and vague descriptions, this PR might be rejected. 
+
+But the metadata has ""Is experimental: False"" and ""Touches tests: False"", which are neutral. The file entropy is 0.0, indicating a single file change, which is okay. The additions and deletions are within reason. However, the fact that the PR's description points to another PR might be a red flag. If the changes here are part of a larger effort but not properly explained, reviewers might ask for more details or close it as a duplicate. 
+
+Considering all factors, the rejection probability might be higher than 0.5. The main issues are the title/description not clearly explaining the changes, pointing to another PR without context, and possible mismatch in task type. So I think this should be rejected.
+"
+3189800591,0,accepted,0.0347,0,"Alright, let's tackle this evaluation step by step. The PR in question is titled ""docs: document supported/unsupported vendor extensions"" and is part of a TypeScript project with an MIT license. The agent used here is OpenAI_Codex, and the task type is ""docs"". The repository has 937 stars and 283 forks, indicating moderate activity.
+
+First, looking at the title and description: The title clearly states it's a documentation update. The description lists several changes, all related to adding documentation about vendor extensions. It mentions adding a new page in the demo site, updating the README, and expanding the list of unsupported ReDoc extensions. The testing command is `yarn lint`, which is standard for checking code quality but might not fully test documentation changes. The description also includes a link to a task on chatgpt.com, which might be part of the agent's workflow but isn't an issue reference, so ""Related issues: 0"" makes sense here.
+
+Next, the metadata shows that the PR touches four files with 65 additions and no deletions. The task is marked as docs, which aligns with the changes. The files changed include the README, a new documentation page for vendor extensions, and updates to the sidebar and config. The metadata flags ""Touches tests: True"" because linting is part of the testing steps. The file entropy is 1.2545, which isn't too high, suggesting the changes are spread across a few files but not excessively.
+
+Looking at the diff, the changes are all documentation-related. The README now includes a section on supported vendor extensions with a table. A new markdown file for vendor extensions details each extension's purpose. The sidebar configuration adds a new entry for the vendor extensions page, and the plugin configuration documentation in the config file also lists supported extensions. The changes are consistent with the description, showing clear additions without deletions, which is typical for documentation updates.
+
+Now, evaluating the rejection signals. The title and description are clear and specific, so no vague or experimental language here. The diff matches the scope described—adding documentation and updating navigation. The testing command is minimal but appropriate for docs changes. The PR doesn't mention any issues, but since it's documentation, that's acceptable. The diff doesn't show any code changes that could introduce bugs, as it's all markdown and config files. The additions are focused on documentation, so no risk of breaking functionality.
+
+Considering acceptance criteria: The description clearly explains the changes, the diff directly implements the stated documentation additions, and there's no experimental language. The metadata shows no red flags—file entropy is moderate, tests are touched (linting), and the task type matches. The only possible minor issue is the lack of related issues, but for documentation, that's often acceptable.
+
+Therefore, this PR meets all the acceptance conditions. The changes are focused, well-documented, and align perfectly with the stated purpose. There's no indication of rejection signals present.
+"
+3199893381,0,accepted,0.0842,0,"Alright, let's evaluate this PR to determine its rejection probability and prediction.
+
+**Title and Description Analysis:**
+The title is ""fix: fix timestamp in file download,"" which clearly states the purpose. The description mentions correcting the timestamp default in file naming. The changes are straightforward and align with the title. There's no vague language or experimental flags here. The testing command is provided (`pnpm test`), though the description is brief but to the point. The mention of a link to a task might be a placeholder, but it doesn't seem to indicate any issues.
+
+**Metadata Review:**
+- **Language:** TypeScript, which is appropriate for the project.
+- **Task type:** fix, which matches the PR's goal.
+- **Stars and Forks:** The repository has moderate activity, but that doesn't affect acceptance directly.
+- **Additions/Deletions:** Small code changes (5 additions, 2 deletions), suggesting a minor fix.
+- **Files changed:** Only 1 file, indicating focused changes.
+- **Related issues:** 0, but since it's a fix, maybe there's an implicit issue.
+- **Touches tests:** True, which is good because it shows testing was done.
+- **File entropy:** 0.0, meaning a single file, so no multi-file complexity issues.
+- **Is experimental/Empty description:** Both are False, so no red flags here.
+
+**Diff Analysis:**
+The diff shows a correction in how timestamps are handled. The original code used `Date.now()` which returns milliseconds, but the function `unixTimestampToISOString` expects seconds. The fix converts milliseconds to seconds by dividing by 1000. This is a logical fix for a timestamp issue. The code change is small and targeted, with no signs of duplication or config-only changes. The test command is included, implying the fix was tested.
+
+**Rejection Signals Check:**
+- **Text:** The title and description match the diff. The description is concise but clear enough.
+- **Metadata:** No strong rejection signals. The only possible minor point is no related issues, but it's a small fix.
+- **Diff:** The change is minor and corrects a clear bug. No signs of introducing bugs or breaking changes.
+
+**Acceptance Conditions:**
+- The description explains the fix clearly.
+- The diff directly addresses the stated issue.
+- No experimental language.
+
+Since all acceptance conditions are met and no rejection signals are present, this PR is likely to be accepted.
+"
+3190566953,0,rejected,0.6845,1,"Okay, let's tackle this PR evaluation. The user provided a pull request titled ""Update repo links to Yacht-sh"" with some details and diffs. My goal is to determine if this PR will be rejected based on the given criteria.
+
+First, looking at the title and description. The title clearly states the main change: updating repo links to Yacht-sh. The description mentions updating docs and code references from old repos and fixing a sidebar link. The testing note says `npm run lint` fails because vue-cli-service isn't found. That's a red flag. If the tests aren't passing, especially linting, that could be an issue.
+
+Now checking the metadata. The language is Vue, license is CC-BY-4.0, and the agent is OpenAI_Codex. The task type is a fix, which is good. The project has 3775 stars and 178 forks, indicating it's somewhat active. The PR has 268 additions and deletions across 4 files. The metadata says touches tests: True, which is positive. But the description length is okay, and there are no related issues. The file entropy is low (0.1459), suggesting few files changed, which is manageable.
+
+The diff shows a lot of changes in the changelog, replacing old repo URLs (wickedyoda/Yacht) with Yacht-sh/Yacht. That's a straightforward update. However, the diff is truncated, so I can't see all changes. The user mentioned the diff is truncated at ~4000 tokens, so maybe there's more, but the main part here is the changelog.
+
+Looking at the rejection signals: the description isn't vague, and the title matches the diff scope (changing repo links). The metadata shows touches tests, but the testing note mentions a failing lint. The user noted that `npm run lint` fails because vue-cli-service isn't found. That's a problem because if the linter is failing, especially due to missing dependencies, the PR might not be acceptable. The PR creator might have missed setting up the environment correctly, leading to test failures.
+
+Also, the PR's commit message and description don't mention addressing the linting error. The ""Testing"" section mentions it but doesn't resolve it. Since linting is part of the tests, this could indicate incomplete work. Additionally, the PR is a straightforward link update, so missing a passing lint is a notable issue.
+
+Another point is the metadata's ""Touches tests: True"" but the test failure isn't addressed. The PR might have modified test files, but the test failure suggests something is wrong. Without fixing the lint error, the PR might not be mergable.
+
+The diff's main changes are URL updates, which are correct. The description is clear, and the title matches. However, the test failure is a significant issue. Since the user can't pass linting, the PR might be rejected unless that's resolved.
+
+Considering all factors: the main change is valid, but the test failure (lint) isn't addressed. The rejection probability would be higher due to the failing test. However, the description and diff align, and the change itself is necessary. Maybe the lint error is a setup issue, but the PR as-is would fail CI if tests are required. The metadata's ""Touches tests: True"" might mean tests were updated but not passing.
+
+Final call: The test failure is a strong signal. Since the PR leaves tests failing, the rejection probability is high. But since the change is straightforward and the issue might be fixable, maybe it's borderline. However, according to the criteria, failing tests without a fix would lead to rejection. So the probability is over 0.5, hence rejected.
+"
+3200393827,1,accepted,0.1234,0,"Alright, let's tackle this PR evaluation step by step. First, I'll start by looking at the title and description to get an overview of what the PR is about. The title mentions making DispatcherExtensions and its methods publicly available. The description explains that they're exposing internal methods to avoid code duplication and provide developer convenience. 
+
+Looking at the metadata, the task type is 'feat', which makes sense since they're adding new public APIs. The PR has a decent number of additions and deletions, but since it's about exposing existing methods, some deletions might be from refactoring. The description length is quite long, which is good because it provides detailed explanations and examples. They mention testing and public API updates, which is a positive sign.
+
+Now, the diff text shows that they're changing the DispatcherExtensions class from internal to public. The methods like FindDispatcher and DispatchIfRequired are being made public. There are also updates to the PublicAPI files, which is crucial for maintaining the public surface. The test files added are a good indicator that they're covering the new APIs with tests.
+
+The rejection probability needs to consider several factors. The description is thorough, explaining the changes, benefits, and usage examples. The metadata shows touches tests and public API files, which is good. The diff includes necessary changes to make the methods public and adds tests. 
+
+Possible red flags: The large number of deletions (2144) might be concerning, but since they mention refactoring and updating PublicAPI files, it might be part of the process. The PR fixes an issue (#29258), which adds context. The agent used is Copilot, but the changes seem legitimate and well-documented.
+
+Considering all this, the PR seems well-structured, tested, and addresses a valid use case. The risk of rejection is low. The main concerns might be the high number of deletions, but without seeing the actual changes, it's hard to tell. However, since the metadata indicates touches tests and the description explains the changes clearly, I'll lean towards acceptance.
+"
+3202328272,1,accepted,0.1124,0,"Alright, let's tackle this PR evaluation step by step. First, I'll start by looking at the title and description provided. The title mentions fixing an issue with empty ""used by:"" sections in strict mode for config-only licenses. The description explains that when strict mode detects non-allowed licenses from config files, the error message doesn't show which libraries are using those licenses. The root cause is a mismatch between how dependency libraries store license hashes versus config libraries storing raw identifiers. The solution involves converting those identifiers to hashes in the config libraries.
+
+Now, checking the metadata: The task type is a fix, which aligns with the title. The description length is quite long, which is good for detail. The PR touches tests and config files, which makes sense given the changes. There's a related issue (#1203), which is a positive sign. The file entropy is moderate, so not too many files changed, which is good. The agent is Copilot, and there's no experimental flag, so that's okay.
+
+Looking at the diff, there's a new function added to convert license identifiers to hashes, which addresses the root cause mentioned. The code seems to handle different cases for matching licenses, like checking SPDX IDs, names, and URLs case-insensitively. This should resolve the issue where config libraries weren't being properly linked to their licenses. The test changes and configuration updates also support the fix.
+
+Possible concerns: The diff shows some version updates in build files (like Kotlinx Serialization and Gradle plugins). These might be necessary for the fix, but if they're unrelated, they could introduce other issues. However, since they're part of the same commit, maybe they're required. The user mentioned a firewall issue in their description, but that might be a red herring or a note from their environment, not part of the PR itself.
+
+The description clearly explains the problem and solution, and the tests are touched, which is good. The metadata shows related issues, which is a plus. The diff seems focused on the problem area. I don't see any obvious code duplication or config-only changes without value here. The addition of the conversion function directly addresses the issue described.
+
+Considering all factors, the description is thorough, the fix targets the problem, and the metadata signals are positive. The rejection probability should be low. Maybe some minor points like version bumps, but since they're in the diff, perhaps they're part of the fix. No strong red flags here.
+"
+3198091319,0,accepted,0.1205,0,"Okay, let's tackle this PR evaluation step by step. The user provided a lot of information, so I need to break it down according to the guidelines.
+
+First, looking at the **title_and_description**. The title clearly states it's a revert of a previous PR (#521), which is good. The description explains that they're reverting changes to clarify fee responsibilities. The summary mentions restoring the original text, which had more details about payment processing fees vs. platform fees. The user also included a mermaid diagram and testing checklist, which shows they considered the impact and provided context. There's no experimental language here, and the description is detailed, so no flags on that front. The title matches the diff since the diff shows reverting a line in the HTML file. The description's purpose aligns with the code changes, so no mismatch there.
+
+Next, **metadata**. The task type is ""revert"", which is appropriate since they're undoing a previous change. The file entropy is 0.0, indicating a single-file change, which is low risk. They touched tests (Touches tests: True), which is good. The description isn't empty, and it's not experimental. The related issues are zero, but since it's a revert, that's acceptable. The additions and deletions are minimal (1 each), so it's a small change. All metadata signals look positive here.
+
+Now, the **diff_text**. The change is a simple text revert in an HTML file. The previous PR simplified the fee responsibility, but this reverts it to the original wording. The diff is straightforward and only affects the content, not any complex code. There's no indication of truncated diffs or large changes. Since it's a revert, the diff scope is narrow and matches the description. The test link provided in the description suggests they tested the change, so no issues there.
+
+Looking at rejection signals:
+- **Text**: The title and description are clear and match the diff. No vague or experimental language.
+- **Metadata**: All flags are positive (Touches tests, not experimental, etc.)
+- **Diff**: The change is minimal and targeted. No bugs introduced, and it's a revert which typically has lower risk.
+
+The user even included a testing checklist and notes about verifying the text and links, which shows thoroughness. The main risk might be if the reverted text is outdated, but since they mention it was requested via Slack and aligns with current policies, that's mitigated.
+
+Since all acceptance conditions are met (clear description, focused diff, no experimental language), this PR should be accepted. The only minor point is that there are no related issues linked, but since it's a revert, that's okay. The testing steps are covered in the description, so the probability should be low.
+"
+3220160518,0,accepted,0.1123,0,"Okay, let's tackle this. The user provided a PR evaluation for a pull request adding tests to a VSCode extension. I need to determine if it's likely to be accepted or rejected based on the given criteria.
+
+First, looking at the title and description: The title is clear and specific about adding comprehensive tests for a function. The description is detailed, listing the changes, test cases, and implementation details. There's no vague or experimental language here. The PR also references an issue (#25272), which is good because related issues are a positive signal. The description mentions all the test cases and ensures they cover edge cases and core functionality. The ""Fixes #25272"" line is a strong indicator that this addresses a specific problem.
+
+Next, the metadata: The task type is ""test"", which is typically acceptable. The description length is sufficient (2347 characters), showing thoroughness. The PR touches tests (Touches tests: True), which is good. There's one related issue, which is a plus. The file entropy is low (0.67), meaning fewer files changed, which is better for review. It's not experimental or empty. The submission time doesn't seem to matter here.
+
+The diff text shows a lot of added tests (720 additions), which is a positive sign. The tests are structured with proper mocking and stubbing, indicating they're well-written. The diff isn't truncated, so the full context is there. The PR includes setup/teardown, uses existing frameworks (Mocha, Sinon), and ensures test isolation. The fact that all tests are passing as stated in the description is another good point.
+
+Now, looking for rejection signals: The PR has a high number of additions (720) but since it's test code and the description justifies it, that's acceptable. There's no mention of breaking changes or config-only changes. The tests are comprehensive and address edge cases. The diff shows proper mocking and doesn't introduce bugs. The related issue is present, so that's covered. The description is clear and the tests are well-structured.
+
+The only possible minor issue is the diff being truncated, but the user mentioned it's truncated at 200 lines, but the rest seems okay. Since the description mentions all tests are passing, and the implementation details align with the code structure, there's no strong reason to reject.
+
+Overall, the PR seems well-structured, addresses a specific issue, adds necessary tests, and follows best practices. The signals point towards acceptance.
+"

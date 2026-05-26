@@ -1,0 +1,8 @@
+,Validation,Test
+PR-AUC,0.5374,0.5309
+ROC-AUC,0.6687,0.6744
+Precision,0.458,0.4992
+Recall,0.5473,0.5516
+F1 (Class 1),0.4987,0.5241
+F1 Macro,0.6067,0.6221
+Accuracy,0.6364,0.6475
