@@ -13,14 +13,8 @@ data/raw/*.npz
 data/processed/*.parquet
 data/processed/*.pkl
 
-# Embeddings (too large for Git — provided via shared Drive folder)
-results/final/multimodal_lr/embeddings/
-
 # Model artifacts (too large for Git — provided via Results Drive folder)
 *.joblib
-
-# Exploratory results (large outputs, not part of final submission)
-results/exploratory/
 
 # IDEs
 .vscode/

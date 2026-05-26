@@ -223,8 +223,10 @@ AgenticPRRejection/
 │   │   ├── qwq_reasoning_llm/               # Few-shot reasoning LLM classifier outputs (pre-saved only)
 │   │   ├── statistical_tests/               # Cross-model comparison results
 │   │   └── eda/                             # Exploratory charts
-│   └── exploratory/                         # Not in repo — excluded via .gitignore
-│       └── exploratory_multimodal_lr_repo_context/  # Repo-context ablation outputs
+│   └── exploratory/                               # Exploratory and tuning outputs
+│       ├── exploratory_multimodal_lr_repo_context/  # Repo-context ablation outputs
+│       ├── reasoning_llm_tuning/                  # Reasoning LLM 50-PR tuning prediction CSVs
+│       └── standard_llm_tuning/                   # Standard LLM 50-PR tuning prediction CSVs
 ├── requirements.txt
 └── README.md
 ```
