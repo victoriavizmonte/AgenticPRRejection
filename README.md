@@ -79,7 +79,7 @@ If you placed it inside a subfolder:
 DRIVE_BASE = Path('/content/drive/MyDrive/MyFolder/AgenticPRRejection')
 ```
 
-The first cell will print `Exists on Drive: True` if the path is correct. If it prints `False`, update `DRIVE_BASE` and re-run the cell before proceeding.
+The first cell will successfully print `Drive mounted` if the path is correct. Otherwise, update `DRIVE_BASE` and re-run the cell before proceeding.
 
 ---
 
